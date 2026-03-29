@@ -395,3 +395,13 @@ ggplot(merged, aes(Epidemiological_Week)) +
 ```
 
 (Multiplying outbreaks by 20 rescales them to match the magnitude of ED visits, allowing both series to be visualized on the same plot.)
+
+## References
+
+*Plotly*. Plotly r graphing library in R. (n.d.). https://plotly.com/r/
+
+Grus, J. (2019). *Data Science from scratch: First principles with python*. O’Reilly.
+
+Coghlan, A. Using R for Time Series Analysis - Time Series 0.2 documentation. (n.d.). https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html
+
+Pelletier, H. (2025, February 3). *How to: Forecast time series using lags*. Towards Data Science. https://towardsdatascience.com/how-to-forecast-time-series-using-lags-5876e3f7f473/
