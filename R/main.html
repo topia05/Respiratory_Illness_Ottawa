@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sofia Balaceanu">
+<meta name="dcterms.date" content="2026-04-02">
+
+<title>Respiratory Illness Patterns in Ottawa</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="main_files/libs/clipboard/clipboard.min.js"></script>
+<script src="main_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="main_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="main_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="main_files/libs/quarto-html/popper.min.js"></script>
+<script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="main_files/libs/quarto-html/anchor.min.js"></script>
+<link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="main_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="main_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="main_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="main_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="main_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="main_files/libs/plotly-binding-4.12.0/plotly.js"></script>
+
+<script src="main_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="main_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="main_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="main_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="main_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="main_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Respiratory Illness Patterns in Ottawa</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sofia Balaceanu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 2, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="i.-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="i.-data-sources">I. Data Sources</h2>
+<p>This analysis uses two open datasets published by Ottawa Public Health.</p>
+<ol type="1">
+<li><p><strong>Dataset A: Emergency department visits</strong></p>
+<p>Columns are:</p>
+<ul>
+<li><code>Epidemiological_Week</code></li>
+<li><code>Age_Category</code></li>
+<li><code>All_Causes_ED_Visits_to_Ottawa_Hospitals</code></li>
+<li><code>Respiratory_related_ED_Visits_to_Ottawa_Hospitals</code></li>
+<li><code>% respiratory</code></li>
+</ul>
+<p>This dataset measures healthcare burden and contains weekly counts of emergency department (ED) visits.</p></li>
+<li><p><strong>Dataset B: Respiratory Outbreaks (Excluding COVID)</strong></p>
+<p>Columns are:</p>
+<ul>
+<li><code>Week_Number</code></li>
+<li><code>Start_of_the_Week</code></li>
+<li><code>Number_of_Respiratory_Outbreaks</code></li>
+<li>Historical baselines (previous 3-season average, pre-COVID average)</li>
+</ul>
+<p>This dataset measures disease activity across institutional settings such as schools, healthcare facilities, and congregate care environments.</p></li>
+</ol>
+<p>Together, these datasets allow us to explore the relationship:</p>
+<p><span class="math display">\[
+\text{Outbreaks} \rightarrow \text{Community transmission} \rightarrow \text{ED visits}
+\]</span></p>
+</section>
+<section id="ii.-research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-research-questions">II. Research questions</h2>
+<p>This project investigates the following questions:</p>
+<ol type="1">
+<li>Do increases in respiratory outbreaks predict increases in emergency visits?</li>
+<li>Are certain age groups more sensitive to outbreaks than others?</li>
+<li>Is the current season above or below historical baseline?</li>
+<li>Do outbreaks in specific settings (schools, healthcare, congregate care) predict increases in respiratory-related ED visits for different age groups?</li>
+</ol>
+</section>
+<section id="iii.-clean-and-merge-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="iii.-clean-and-merge-datasets">III. Clean and merge datasets</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"All_causes_and_respiratory_related_emergency.csv"</span>), <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>outbreaks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"Respiratory_Outbreaks_(excluding_COVID-19).csv"</span>), <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># head(ed)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># head(outbreaks)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Align weeks</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ed <span class="ot">&lt;-</span> ed <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Epidemiological_Week =</span> <span class="fu">ymd</span>(Epidemiological_Week))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>outbreaks <span class="ot">&lt;-</span> outbreaks <span class="sc">|&gt;</span> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Start_of_the_Week =</span> <span class="fu">ymd</span>(Start_of_the_Week))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> ed <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(outbreaks, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Epidemiological_Week"</span> <span class="ot">=</span> <span class="st">"Start_of_the_Week"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Outbreak variables were renamed for readability and aggregated into a total outbreak measure:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">outbreaks_school =</span>    </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">outbreaks_health =</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">outbreaks_congregate =</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">prev_avg_school =</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">prev_avg_health =</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">prev_avg_congregate =</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">pre_covid_school =</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">pre_covid_health =</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">pre_covid_congregate =</span> </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_outbreaks =</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>           outbreaks_school <span class="sc">+</span> outbreaks_health <span class="sc">+</span> outbreaks_congregate)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_outbreaks_prev =</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>           prev_avg_school <span class="sc">+</span> prev_avg_health <span class="sc">+</span> prev_avg_congregate)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_outbreaks_pre_covid =</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>           pre_covid_school <span class="sc">+</span> pre_covid_health <span class="sc">+</span> pre_covid_congregate)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#head(merged)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="iv.-exploratory-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="iv.-exploratory-analysis">IV. Exploratory analysis</h2>
+<p>Seasonal patterns by age group</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(Epidemiological_Week,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         Respiratory_related_ED_Visits_to_Ottawa_Hospitals)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Category)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This visualization shows clear seasonal peaks and substantial differences in baseline respiratory ED visits across age groups.</p>
+</section>
+<section id="v.-lagged-outbreak-effect" class="level2">
+<h2 class="anchored" data-anchor-id="v.-lagged-outbreak-effect">V. Lagged Outbreak Effect</h2>
+<p>Respiratory outbreaks typically precede increases in hospital visits. To account for this, outbreak counts were lagged by one week.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Keeping lags separate</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Epidemiological_Week) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_school =</span> <span class="fu">lag</span>(outbreaks_school, <span class="dv">1</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_health =</span> <span class="fu">lag</span>(outbreaks_health, <span class="dv">1</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_congregate =</span> <span class="fu">lag</span>(outbreaks_congregate, <span class="dv">1</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_total =</span> <span class="fu">lag</span>(total_outbreaks, <span class="dv">1</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(lag_school, lag_health, lag_congregate, lag_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="vi.-regression-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="vi.-regression-analysis">VI. Regression Analysis</h2>
+<section id="model-1-no-age-interaction" class="level3">
+<h3 class="anchored" data-anchor-id="model-1-no-age-interaction"><strong>Model 1: No age interaction</strong></h3>
+<ul>
+<li>Which outbreak type predicts ED visits overall?</li>
+<li>This model assumes outbreaks affect all age groups equally.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               lag_school <span class="sc">+</span> lag_health <span class="sc">+</span> lag_congregate <span class="sc">+</span> Age_Category,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> analysis_df)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(model1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="model-2-interaction-between-outbreaks-and-age" class="level3">
+<h3 class="anchored" data-anchor-id="model-2-interaction-between-outbreaks-and-age"><strong>Model 2: Interaction between outbreaks and age</strong></h3>
+<ul>
+<li><p>Allows the effect of outbreaks to differ across age groups</p></li>
+<li><p>Is age affected by original outbreak location?</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    (lag_school <span class="sc">+</span> lag_health <span class="sc">+</span> lag_congregate) <span class="sc">*</span> Age_Category,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> analysis_df</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(model2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="model-1-vs.-model-2-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="model-1-vs.-model-2-comparison">Model 1 vs.&nbsp;Model 2 comparison</h3>
+<p>H_0: Interaction terms do not improve the model</p>
+<p>H_a: Interaction terms significantly improve fit</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model1, model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ lag_school + 
+    lag_health + lag_congregate + Age_Category
+Model 2: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + 
+    lag_health + lag_congregate) * Age_Category
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1    152 505636                                  
+2    137 384107 15    121529 2.8897 0.0005604 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><strong>Result:</strong></p>
+<p>p-value &lt; 0.00056, reject the null at 5% level. Allowing outbreak effects to vary by age significantly improves the model’s ability to explain ED visits. This suggests the relationship between respiratory outbreaks and emergency department visits varies significantly across age groups.</p>
+</section>
+</section>
+<section id="vii.-aggregated-outbreak-model" class="level2">
+<h2 class="anchored" data-anchor-id="vii.-aggregated-outbreak-model">VII. Aggregated Outbreak Model</h2>
+<p>Because outbreak types were strongly correlated, an aggregated outbreak variable was also evaluated.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_age_sensitivity <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    lag_total <span class="sc">*</span> Age_Category,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> analysis_df</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_age_sensitivity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: Respiratory_related_ED_Visits_to_Ottawa_Hospitals
+                        Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+lag_total                1  288845  288845  96.245 &lt; 2.2e-16 ***
+Age_Category             5 1205278  241056  80.321 &lt; 2.2e-16 ***
+lag_total:Age_Category   5   76109   15222   5.072 0.0002533 ***
+Residuals              149  447171    3001                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><strong>Result:</strong></p>
+<ul>
+<li><p>Total outbreaks: p &lt; 0.001</p></li>
+<li><p>Age category: p &lt; 0.001</p></li>
+<li><p>Interaction: p = 0.00025</p></li>
+</ul>
+<p>This indicates that:</p>
+<ul>
+<li><p>outbreak intensity predicts ED visits</p></li>
+<li><p>age strongly influences baseline visit levels</p></li>
+<li><p>age groups respond differently to increases in outbreaks</p></li>
+</ul>
+<p>Comparing aggregated and disaggregated models:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_age_sensitivity, model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ lag_total * 
+    Age_Category
+Model 2: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + 
+    lag_health + lag_congregate) * Age_Category
+  Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
+1    149 447171                              
+2    137 384107 12     63064 1.8744 0.04262 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The detailed outbreak model provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a reasonable summary predictor.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slopes differe = interaction justified</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_df,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(lag_congregate,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Age_Category)) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="idk" class="level2">
+<h2 class="anchored" data-anchor-id="idk">idk</h2>
+<p>Does separating outbreaks improve prediction?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model_total <span class="ot">&lt;-</span> <span class="fu">lm</span>(   Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span>     total_outbreaks <span class="sc">+</span> Age_Category,   <span class="at">data =</span> analysis_df )  </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_total, model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ total_outbreaks + 
+    Age_Category
+Model 2: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + 
+    lag_health + lag_congregate) * Age_Category
+  Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
+1    154 456154                              
+2    137 384107 17     72047 1.5116 0.09908 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model_separate <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span> (lag_school <span class="sc">+</span> lag_health <span class="sc">+</span> lag_congregate) <span class="sc">*</span> Age_Category,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> analysis_df</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>model_total <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  Respiratory_related_ED_Visits_to_Ottawa_Hospitals <span class="sc">~</span> lag_total <span class="sc">*</span> Age_Category,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> analysis_df</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_total, model_separate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ lag_total * 
+    Age_Category
+Model 2: Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + 
+    lag_health + lag_congregate) * Age_Category
+  Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
+1    149 447171                              
+2    137 384107 12     63064 1.8744 0.04262 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Testing: Does breaking outbreaks into school/health/congregate + interactions improve prediction compared to using only total outbreaks? (H_0: Simple model is sufficient vs.&nbsp;H_a: The complex model explains more variance).</p>
+<p>If p-value small, the detailed outbreak categories provide significantly better predictive power.</p>
+<ul>
+<li>With a p-value of 0.099, we fail to reject the null hypothesis at the 5% level. At a 10% level we would reject the null, so the difference is marginally significant.</li>
+</ul>
+<p>An F-test comparing the two models suggested that incorporating outbreak setting and age interactions provided a marginal improvement in model fit (p = 0.099), though not statistically significant at the 5% level.</p>
+<p>A linear model including total respiratory outbreaks and age category explained a substantial proportion of variation in respiratory-related emergency visits. Both outbreak activity and age were highly significant predictors (p &lt; 0.001). The interaction between age and outbreak activity was also significant (p = 0.0003), indicating that increases in outbreaks affected age groups differently. Models that separated outbreaks by setting (school, healthcare, congregate) provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a sufficient summary measure for predicting emergency department utilization.</p>
+</section>
+<section id="viii.-model-diagnostics" class="level2">
+<h2 class="anchored" data-anchor-id="viii.-model-diagnostics">VIII. Model diagnostics</h2>
+<section id="check-model-fit-model-2" class="level3">
+<h3 class="anchored" data-anchor-id="check-model-fit-model-2">Check model fit (Model 2)</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Residual vs Fitted</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Q-Q Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">VIF</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#par(mfrow = c(2,2))</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>LOESS line is fairly flat, suggesting the linearity assumption is not badly violated</p></li>
+<li><p>A slight curvature indicates the relationship may not be perfectly linear</p></li>
+<li><p>Points standing out with outliers: 91, 96, 108</p></li>
+</ul>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Most points fall along the line, normality mostly fine</p></li>
+<li><p>Deviation in the tails, especially upper, driven by the same outliers (91, 96, 108)</p></li>
+<li><p>Normality assumption is not really perfect.</p></li>
+</ul>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model_age_sensitivity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                           GVIF Df GVIF^(1/(2*Df))
+lag_total                6.1131  1        2.472468
+Age_Category           231.2755  5        1.723507
+lag_total:Age_Category 619.5614  5        1.901991</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   GVIF Df GVIF^(1/(2*Df))
+lag_school                     6.052491  1        2.460181
+lag_health                     7.134600  1        2.671067
+lag_congregate                 7.096479  1        2.663922
+Age_Category                 261.944950  5        1.745103
+lag_school:Age_Category        7.284619  5        1.219665
+lag_health:Age_Category     1409.732352  5        2.064970
+lag_congregate:Age_Category   27.145506  5        1.391137</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The linear model fit is overall acceptable but not flawless, the biggest issues being a handful of influential outliers, slight nonlinearity and mild heteroscedasticity (variance of errors terms not constant across all levels of independent variables)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># good plot</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_df,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lag_total,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> Age_Category)) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ix.-comparison-with-historical-baselines" class="level2">
+<h2 class="anchored" data-anchor-id="ix.-comparison-with-historical-baselines">IX. Comparison with historical baselines</h2>
+<p>Outbreak counts were compared to historical averages to identify anomalous seasons.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">outbreak_anomaly =</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>           total_outbreaks <span class="sc">-</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           total_outbreaks_prev)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This allows current disease activity to be interpreted relative to pre-COVID seasonal patterns.</p>
+</section>
+<section id="x.-findings" class="level2">
+<h2 class="anchored" data-anchor-id="x.-findings">X. Findings</h2>
+<ol type="1">
+<li><p>Respiratory outbreaks significantly predict increases in emergency department visits.</p></li>
+<li><p>Age is the strongest determinant of baseline ED utilization.</p></li>
+<li><p>The effect of outbreaks is not uniform across age groups; children aged 0–3 showed the strongest sensitivity.</p></li>
+<li><p>Separating outbreaks by institutional setting provides limited additional predictive value compared to using total outbreak counts.</p></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(plotly)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># p &lt;- ggplot(merged,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#             aes(Epidemiological_Week,</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                 Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                 colour = Age_Category)) +</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line()</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplotly(p)</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare merged data for plotting</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_outbreaks_scaled =</span> total_outbreaks <span class="sc">*</span> <span class="dv">20</span>, <span class="co"># rescale to match ED visits</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseline_scaled =</span> total_outbreaks_prev <span class="sc">*</span> <span class="dv">20</span>   <span class="co"># previous 3-season average</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Base ggplot</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> Epidemiological_Week)) <span class="sc">+</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Respiratory ED visits by age group</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> Age_Category),</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Total outbreaks (rescaled)</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> total_outbreaks_scaled),</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">1</span>,</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Historical baseline (ribbon)</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> baseline_scaled),</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Respiratory ED Visits vs. Institutional Outbreaks in Ottawa"</span>,</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"ED Visits / Outbreaks (scaled)"</span>,</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Week"</span>,</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Age Group"</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Make interactive</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"color"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-8587e29648c8322d8307" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8587e29648c8322d8307">{"x":{"data":[{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[154,147,157,206,214,225,207,249,237,237,246,243,304,355,476,576,603,486,315,209,218,206,253,217,226,220,204],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 154<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 147<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 157<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 206<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 214<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 225<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 207<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 249<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 237<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 237<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 246<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 243<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 304<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 355<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 476<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 576<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 603<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 486<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 315<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 209<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 218<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 206<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 253<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 217<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 226<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 220<br />Age_Category: 00 to 03 Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 204<br />Age_Category: 00 to 03 Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(248,118,109,1)","dash":"solid"},"hoveron":"points","name":"00 to 03 Years","legendgroup":"00 to 03 Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[61,73,119,127,128,107,109,84,85,79,123,112,155,265,343,364,320,210,97,48,58,83,87,69,92,83,86],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  61<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  73<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 119<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 127<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 128<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 107<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 109<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  84<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  85<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  79<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 123<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 112<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 155<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 265<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 343<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 364<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 320<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 210<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  97<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  48<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  58<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  83<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  87<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  69<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  92<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  83<br />Age_Category: 04 to 11 Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  86<br />Age_Category: 04 to 11 Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(183,159,0,1)","dash":"solid"},"hoveron":"points","name":"04 to 11 Years","legendgroup":"04 to 11 Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[24,24,46,34,42,37,29,19,35,26,29,36,54,97,117,98,67,41,25,17,23,28,13,24,21,24,33],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  24<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  24<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  46<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  34<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  42<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  37<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  29<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  19<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  35<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  26<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  29<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  36<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  54<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  97<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 117<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  98<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  67<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  41<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  25<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  17<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  23<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  28<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  13<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  24<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  21<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  24<br />Age_Category: 12 to 17 Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  33<br />Age_Category: 12 to 17 Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(0,186,56,1)","dash":"solid"},"hoveron":"points","name":"12 to 17 Years","legendgroup":"12 to 17 Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[198,204,195,224,235,253,220,227,216,172,236,248,225,306,352,437,478,371,318,292,234,226,211,228,203,236,209],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 198<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 204<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 195<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 224<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 235<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 253<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 220<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 227<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 216<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 172<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 236<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 248<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 225<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 306<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 352<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 437<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 478<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 371<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 318<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 292<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 234<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 226<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 211<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 228<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 203<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 236<br />Age_Category: 18 to 54 Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 209<br />Age_Category: 18 to 54 Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(0,191,196,1)","dash":"solid"},"hoveron":"points","name":"18 to 54 Years","legendgroup":"18 to 54 Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[149,141,150,144,143,152,159,163,177,150,183,187,148,161,205,245,282,306,293,231,185,138,182,177,186,190,189],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 149<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 141<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 150<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 144<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 143<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 152<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 159<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 163<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 177<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 150<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 183<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 187<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 148<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 161<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 205<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 245<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 282<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 306<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 293<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 231<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 185<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 138<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 182<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 177<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 186<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 190<br />Age_Category: 55 to 79 Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 189<br />Age_Category: 55 to 79 Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(97,156,255,1)","dash":"solid"},"hoveron":"points","name":"55 to 79 Years","legendgroup":"55 to 79 Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20331,20338,20345,20352,20359,20366,20373,20380,20387,20394,20401,20408,20415,20422,20429,20436,20443,20450,20457,20464,20471,20478,20485,20492,20499,20506],"y":[82,84,60,80,71,74,67,62,71,65,84,76,73,79,98,120,116,125,135,98,73,62,92,74,67,81,69],"text":["Epidemiological_Week: 2025-08-24<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  82<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-08-31<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  84<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-09-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  60<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-09-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  80<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-09-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  71<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-09-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  74<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-10-05<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  67<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-10-12<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  62<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-10-19<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  71<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-10-26<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  65<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-11-02<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  84<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-11-09<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  76<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-11-16<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  73<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-11-23<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  79<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-11-30<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  98<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-12-07<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 120<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-12-14<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 116<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-12-21<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 125<br />Age_Category: 80+ Years","Epidemiological_Week: 2025-12-28<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals: 135<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-01-04<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  98<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-01-11<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  73<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-01-18<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  62<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-01-25<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  92<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-02-01<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  74<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-02-08<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  67<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-02-15<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  81<br />Age_Category: 80+ Years","Epidemiological_Week: 2026-02-22<br />Respiratory_related_ED_Visits_to_Ottawa_Hospitals:  69<br />Age_Category: 80+ Years"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(245,100,227,1)","dash":"solid"},"hoveron":"points","name":"80+ Years","legendgroup":"80+ Years","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20324,20324,20324,20324,20324,20331,20331,20331,20331,20331,20331,20338,20338,20338,20338,20338,20338,20345,20345,20345,20345,20345,20345,20352,20352,20352,20352,20352,20352,20359,20359,20359,20359,20359,20359,20366,20366,20366,20366,20366,20366,20373,20373,20373,20373,20373,20373,20380,20380,20380,20380,20380,20380,20387,20387,20387,20387,20387,20387,20394,20394,20394,20394,20394,20394,20401,20401,20401,20401,20401,20401,20408,20408,20408,20408,20408,20408,20415,20415,20415,20415,20415,20415,20422,20422,20422,20422,20422,20422,20429,20429,20429,20429,20429,20429,20436,20436,20436,20436,20436,20436,20443,20443,20443,20443,20443,20443,20450,20450,20450,20450,20450,20450,20457,20457,20457,20457,20457,20457,20464,20464,20464,20464,20464,20464,20471,20471,20471,20471,20471,20471,20478,20478,20478,20478,20478,20478,20485,20485,20485,20485,20485,20485,20492,20492,20492,20492,20492,20492,20499,20499,20499,20499,20499,20499,20506,20506,20506,20506,20506,20506],"y":[100,100,100,100,100,100,40,40,40,40,40,40,40,40,40,40,40,40,60,60,60,60,60,60,120,120,120,120,120,120,140,140,140,140,140,140,0,0,0,0,0,0,40,40,40,40,40,40,80,80,80,80,80,80,100,100,100,100,100,100,60,60,60,60,60,60,20,20,20,20,20,20,140,140,140,140,140,140,140,140,140,140,140,140,320,320,320,320,320,320,260,260,260,260,260,260,320,320,320,320,320,320,320,320,320,320,320,320,280,280,280,280,280,280,120,120,120,120,120,120,140,140,140,140,140,140,60,60,60,60,60,60,200,200,200,200,200,200,80,80,80,80,80,80,120,120,120,120,120,120,160,160,160,160,160,160,60,60,60,60,60,60],"text":["Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-24<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-08-31<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-07<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-14<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-21<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-09-28<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-05<br />total_outbreaks_scaled:   0","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-12<br />total_outbreaks_scaled:  40","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-19<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-10-26<br />total_outbreaks_scaled: 100","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-02<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-09<br />total_outbreaks_scaled:  20","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-16<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-23<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-11-30<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-07<br />total_outbreaks_scaled: 260","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-14<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-21<br />total_outbreaks_scaled: 320","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2025-12-28<br />total_outbreaks_scaled: 280","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-04<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-11<br />total_outbreaks_scaled: 140","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-18<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-01-25<br />total_outbreaks_scaled: 200","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-01<br />total_outbreaks_scaled:  80","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-08<br />total_outbreaks_scaled: 120","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-15<br />total_outbreaks_scaled: 160","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60","Epidemiological_Week: 2026-02-22<br />total_outbreaks_scaled:  60"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(0,0,255,0.7)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20324,20324,20324,20324,20324,20324,20331,20331,20331,20331,20331,20331,20338,20338,20338,20338,20338,20338,20345,20345,20345,20345,20345,20345,20352,20352,20352,20352,20352,20352,20359,20359,20359,20359,20359,20359,20366,20366,20366,20366,20366,20366,20373,20373,20373,20373,20373,20373,20380,20380,20380,20380,20380,20380,20387,20387,20387,20387,20387,20387,20394,20394,20394,20394,20394,20394,20401,20401,20401,20401,20401,20401,20408,20408,20408,20408,20408,20408,20415,20415,20415,20415,20415,20415,20422,20422,20422,20422,20422,20422,20429,20429,20429,20429,20429,20429,20436,20436,20436,20436,20436,20436,20443,20443,20443,20443,20443,20443,20450,20450,20450,20450,20450,20450,20457,20457,20457,20457,20457,20457,20464,20464,20464,20464,20464,20464,20471,20471,20471,20471,20471,20471,20478,20478,20478,20478,20478,20478,20485,20485,20485,20485,20485,20485,20492,20492,20492,20492,20492,20492,20499,20499,20499,20499,20499,20499,20506,20506,20506,20506,20506,20506,20506,20506,20506,20506,20506,20506,20506,20499,20499,20499,20499,20499,20499,20492,20492,20492,20492,20492,20492,20485,20485,20485,20485,20485,20485,20478,20478,20478,20478,20478,20478,20471,20471,20471,20471,20471,20471,20464,20464,20464,20464,20464,20464,20457,20457,20457,20457,20457,20457,20450,20450,20450,20450,20450,20450,20443,20443,20443,20443,20443,20443,20436,20436,20436,20436,20436,20436,20429,20429,20429,20429,20429,20429,20422,20422,20422,20422,20422,20422,20415,20415,20415,20415,20415,20415,20408,20408,20408,20408,20408,20408,20401,20401,20401,20401,20401,20401,20394,20394,20394,20394,20394,20394,20387,20387,20387,20387,20387,20387,20380,20380,20380,20380,20380,20380,20373,20373,20373,20373,20373,20373,20366,20366,20366,20366,20366,20366,20359,20359,20359,20359,20359,20359,20352,20352,20352,20352,20352,20352,20345,20345,20345,20345,20345,20345,20338,20338,20338,20338,20338,20338,20331,20331,20331,20331,20331,20331,20324,20324,20324,20324,20324,20324,20324],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,140,140,140,140,140,140,146,146,146,146,146,146,140,140,140,140,140,140,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,140,140,140,140,140,140,146,146,146,146,146,146,200,200,200,200,200,200,86,86,86,86,86,86,null,null,null,null,null,null,106,106,106,106,106,106,80,80,80,80,80,80,146,146,146,146,146,146,166,166,166,166,166,166,160,160,160,160,160,160,200,200,200,200,200,200,172,172,172,172,172,172,247.99999999999997,247.99999999999997,247.99999999999997,247.99999999999997,247.99999999999997,247.99999999999997,160,160,160,160,160,160,134,134,134,134,134,134,74,74,74,74,74,74,146,146,146,146,146,146,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,77.999999999999986,26,26,26,26,26,26,20,20,20,20,20,20,32,32,32,32,32,32,26,26,26,26,26,26,34,34,34,34,34,34,0],"text":["Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-22","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-15","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-08","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-02-01","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-25","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-18","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-11","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2026-01-04","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-28","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-21","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-14","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-12-07","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-30","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-23","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-16","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-09","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-11-02","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-26","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-19","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-12","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-10-05","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-28","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-21","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-14","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-09-07","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-31","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24","Epidemiological_Week: 2025-08-24"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(173,216,230,0.2)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":47.61477791614778,"r":9.2984640929846396,"b":47.422166874221666,"l":54.860938148609378},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279},"title":{"text":"Respiratory ED Visits vs. Institutional Outbreaks in Ottawa","font":{"color":"rgba(0,0,0,1)","family":"","size":22.316313823163139},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[20314.900000000001,20515.099999999999],"tickmode":"array","ticktext":["Oct","Jan"],"tickvals":[20362,20454],"categoryorder":"array","categoryarray":["Oct","Jan"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.6492320464923198,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.877542548775427},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.8453149175440583,"zeroline":false,"anchor":"y","title":{"text":"Week","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-30.150000000000002,633.14999999999998],"tickmode":"array","ticktext":["0","200","400","600"],"tickvals":[0,200,400,600],"categoryorder":"array","categoryarray":["0","200","400","600"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.6492320464923198,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.8453149175440583,"zeroline":false,"anchor":"x","title":{"text":"ED Visits / Outbreaks (scaled)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.877542548775427},"title":{"text":"Age Group","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969279}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"8f6012517dfa":{"x":{},"y":{},"colour":{},"type":"scatter"},"8f607c784e43":{"x":{},"y":{}},"8f607bff28a0":{"x":{},"ymin":{},"ymax":{}}},"cur_data":"8f6012517dfa","visdat":{"8f6012517dfa":["function (y) ","x"],"8f607c784e43":["function (y) ","x"],"8f607bff28a0":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="viii.-edpidemiological-curve" class="level2">
+<h2 class="anchored" data-anchor-id="viii.-edpidemiological-curve">VIII. Edpidemiological curve</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged, <span class="fu">aes</span>(Epidemiological_Week)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Respiratory_related_ED_Visits_to_Ottawa_Hospitals),</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> total_outbreaks <span class="sc">*</span> <span class="dv">20</span>), </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(Multiplying outbreaks by 20 rescales them to match the magnitude of ED visits, allowing both series to be visualized on the same plot.)</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

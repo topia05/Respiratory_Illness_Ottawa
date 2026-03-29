@@ -43,3 +43,16 @@ plot(outbreaks$Week_Number,
     outbreaks$Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care,
     ylab = "Outbreaks in Congegrate Care",
     xlab="Week")
+
+
+# merged <- merged |>
+#   arrange(Epidemiological_Week) |>
+#   mutate(
+#     lag_school = lag(outbreaks_school, 1),
+#     lag_health = lag(outbreaks_health, 1),
+#     lag_congregate = lag(outbreaks_congregate, 1)
+#   )
+
+# model_sep <- lm(Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
+#      lag_school + lag_health + lag_congregate,
+#    data = merged)

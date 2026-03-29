@@ -1,6 +1,397 @@
 ---
 title: "Respiratory Illness Patterns in Ottawa"
 format: html
+execute: 
+    warning: false
+    message: false
+author: "Sofia Balaceanu"
+date: "2026-04-02"
 ---
 
-:P
+## I. Data Sources
+
+This analysis uses two open datasets published by Ottawa Public Health.
+
+1.  **Dataset A: Emergency department visits**
+
+    Columns are:
+
+    -   `Epidemiological_Week`
+    -   `Age_Category`
+    -   `All_Causes_ED_Visits_to_Ottawa_Hospitals`
+    -   `Respiratory_related_ED_Visits_to_Ottawa_Hospitals`
+    -   `% respiratory`
+
+    This dataset measures healthcare burden and contains weekly counts of emergency department (ED) visits.
+
+2.  **Dataset B: Respiratory Outbreaks (Excluding COVID)**
+
+    Columns are:
+
+    -   `Week_Number`
+    -   `Start_of_the_Week`
+    -   `Number_of_Respiratory_Outbreaks`
+    -   Historical baselines (previous 3-season average, pre-COVID average)
+
+    This dataset measures disease activity across institutional settings such as schools, healthcare facilities, and congregate care environments.
+
+Together, these datasets allow us to explore the relationship:
+
+$$
+\text{Outbreaks} \rightarrow \text{Community transmission} \rightarrow \text{ED visits}
+$$
+
+## II. Research questions
+
+This project investigates the following questions:
+
+1.  Do increases in respiratory outbreaks predict increases in emergency visits?
+2.  Are certain age groups more sensitive to outbreaks than others?
+3.  Is the current season above or below historical baseline?
+4.  Do outbreaks in specific settings (schools, healthcare, congregate care) predict increases in respiratory-related ED visits for different age groups?
+
+## III. Clean and merge datasets
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(here)
+
+ed <- read.csv(here("data", "All_causes_and_respiratory_related_emergency.csv"), header = TRUE)
+outbreaks <- read.csv(here("data", "Respiratory_Outbreaks_(excluding_COVID-19).csv"), header = TRUE)
+
+# head(ed)
+# head(outbreaks)
+# Align weeks
+ed <- ed |>
+        mutate(Epidemiological_Week = ymd(Epidemiological_Week))
+
+outbreaks <- outbreaks |> 
+        mutate(Start_of_the_Week = ymd(Start_of_the_Week))
+
+merged <- ed |>
+        left_join(outbreaks, by = c("Epidemiological_Week" = "Start_of_the_Week"))
+```
+
+Outbreak variables were renamed for readability and aggregated into a total outbreak measure:
+
+```{r}
+merged <- merged |>
+  rename(
+    outbreaks_school =    
+      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care,
+    outbreaks_health =
+      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions,
+    outbreaks_congregate =
+      Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care,
+  
+    prev_avg_school = 
+        Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care,
+    prev_avg_health = 
+        Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions,
+    prev_avg_congregate = 
+      Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care,
+    
+    pre_covid_school = 
+      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care,
+    pre_covid_health = 
+      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions,
+    pre_covid_congregate = 
+      Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care
+  )
+
+merged <- merged |>
+  mutate(total_outbreaks =
+           outbreaks_school + outbreaks_health + outbreaks_congregate)
+merged <- merged |>
+  mutate(total_outbreaks_prev =
+           prev_avg_school + prev_avg_health + prev_avg_congregate)
+merged <- merged |>
+  mutate(total_outbreaks_pre_covid =
+           pre_covid_school + pre_covid_health + pre_covid_congregate)
+
+#head(merged)
+```
+
+## IV. Exploratory analysis
+
+Seasonal patterns by age group
+
+```{r}
+ggplot(merged,
+      aes(Epidemiological_Week,
+         Respiratory_related_ED_Visits_to_Ottawa_Hospitals)) +
+       geom_line() +
+        facet_wrap(~Age_Category)
+```
+
+This visualization shows clear seasonal peaks and substantial differences in baseline respiratory ED visits across age groups.
+
+## V. Lagged Outbreak Effect
+
+Respiratory outbreaks typically precede increases in hospital visits. To account for this, outbreak counts were lagged by one week.
+
+```{r}
+# Keeping lags separate
+merged <- merged |>
+  arrange(Epidemiological_Week) |>
+  mutate(
+    lag_school = lag(outbreaks_school, 1),
+    lag_health = lag(outbreaks_health, 1),
+    lag_congregate = lag(outbreaks_congregate, 1),
+    lag_total = lag(total_outbreaks, 1)
+  )
+
+analysis_df <- merged |>
+  drop_na(lag_school, lag_health, lag_congregate, lag_total)
+```
+
+## VI. Regression Analysis
+
+### **Model 1: No age interaction**
+
+-   Which outbreak type predicts ED visits overall?
+-   This model assumes outbreaks affect all age groups equally.
+
+```{r}
+model1 <- lm(Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
+               lag_school + lag_health + lag_congregate + Age_Category,
+              data = analysis_df)
+#summary(model1)
+```
+
+### **Model 2: Interaction between outbreaks and age**
+
+-   Allows the effect of outbreaks to differ across age groups
+
+-   Is age affected by original outbreak location?
+
+```{r}
+model2 <- lm(
+  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
+    (lag_school + lag_health + lag_congregate) * Age_Category,
+  data = analysis_df
+)
+
+#summary(model2)
+```
+
+### Model 1 vs. Model 2 comparison
+
+H_0: Interaction terms do not improve the model
+
+H_a: Interaction terms significantly improve fit
+
+```{r}
+anova(model1, model2)
+```
+
+**Result:**
+
+p-value \< 0.00056, reject the null at 5% level. Allowing outbreak effects to vary by age significantly improves the model's ability to explain ED visits. This suggests the relationship between respiratory outbreaks and emergency department visits varies significantly across age groups.
+
+## VII. Aggregated Outbreak Model
+
+Because outbreak types were strongly correlated, an aggregated outbreak variable was also evaluated.
+
+```{r}
+model_age_sensitivity <- lm(
+  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
+    lag_total * Age_Category,
+  data = analysis_df
+)
+
+anova(model_age_sensitivity)
+```
+
+**Result:**
+
+-   Total outbreaks: p \< 0.001
+
+-   Age category: p \< 0.001
+
+-   Interaction: p = 0.00025
+
+This indicates that:
+
+-   outbreak intensity predicts ED visits
+
+-   age strongly influences baseline visit levels
+
+-   age groups respond differently to increases in outbreaks
+
+Comparing aggregated and disaggregated models:
+
+```{r}
+anova(model_age_sensitivity, model2)
+```
+
+The detailed outbreak model provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a reasonable summary predictor.
+
+```{r}
+# Slopes differe = interaction justified
+ggplot(analysis_df,
+       aes(lag_congregate,
+           Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
+           colour = Age_Category)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## idk
+
+Does separating outbreaks improve prediction?
+
+```{r}
+model_total <- lm(   Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~     total_outbreaks + Age_Category,   data = analysis_df )  
+anova(model_total, model2)
+
+model_separate <- lm(
+  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + lag_health + lag_congregate) * Age_Category,
+  data = analysis_df
+)
+
+model_total <- lm(
+  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ lag_total * Age_Category,
+  data = analysis_df
+)
+
+anova(model_total, model_separate)
+```
+
+Testing: Does breaking outbreaks into school/health/congregate + interactions improve prediction compared to using only total outbreaks? (H_0: Simple model is sufficient vs. H_a: The complex model explains more variance).
+
+If p-value small, the detailed outbreak categories provide significantly better predictive power.
+
+-   With a p-value of 0.099, we fail to reject the null hypothesis at the 5% level. At a 10% level we would reject the null, so the difference is marginally significant.
+
+An F-test comparing the two models suggested that incorporating outbreak setting and age interactions provided a marginal improvement in model fit (p = 0.099), though not statistically significant at the 5% level.
+
+A linear model including total respiratory outbreaks and age category explained a substantial proportion of variation in respiratory-related emergency visits. Both outbreak activity and age were highly significant predictors (p \< 0.001). The interaction between age and outbreak activity was also significant (p = 0.0003), indicating that increases in outbreaks affected age groups differently. Models that separated outbreaks by setting (school, healthcare, congregate) provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a sufficient summary measure for predicting emergency department utilization.
+
+## VIII. Model diagnostics
+
+### Check model fit (Model 2)
+
+::: panel-tabset
+## Residual vs Fitted
+
+```{r}
+#par(mfrow = c(2,2))
+plot(model2, which=1)
+```
+
+-   LOESS line is fairly flat, suggesting the linearity assumption is not badly violated
+
+-   A slight curvature indicates the relationship may not be perfectly linear
+
+-   Points standing out with outliers: 91, 96, 108
+
+## Q-Q Plot
+
+```{r}
+plot(model2, which=2)
+```
+
+-   Most points fall along the line, normality mostly fine
+
+-   Deviation in the tails, especially upper, driven by the same outliers (91, 96, 108)
+
+-   Normality assumption is not really perfect.
+
+## VIF
+
+```{r}
+library(car)
+vif(model_age_sensitivity)
+vif(model2)
+```
+:::
+
+The linear model fit is overall acceptable but not flawless, the biggest issues being a handful of influential outliers, slight nonlinearity and mild heteroscedasticity (variance of errors terms not constant across all levels of independent variables)
+
+```{r}
+# good plot
+library(ggplot2)
+
+ggplot(analysis_df,
+       aes(x = lag_total,
+           y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
+           color = Age_Category)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## IX. Comparison with historical baselines
+
+Outbreak counts were compared to historical averages to identify anomalous seasons.
+
+```{r}
+merged <- merged |>
+  mutate(outbreak_anomaly =
+           total_outbreaks -
+           total_outbreaks_prev)
+```
+
+This allows current disease activity to be interpreted relative to pre-COVID seasonal patterns.
+
+## X. Findings
+
+1.  Respiratory outbreaks significantly predict increases in emergency department visits.
+
+2.  Age is the strongest determinant of baseline ED utilization.
+
+3.  The effect of outbreaks is not uniform across age groups; children aged 0–3 showed the strongest sensitivity.
+
+4.  Separating outbreaks by institutional setting provides limited additional predictive value compared to using total outbreak counts.
+
+```{r}
+library(plotly)
+library(ggplot2)
+library(dplyr)
+
+plot_df <- merged |>
+  mutate(
+    total_outbreaks_scaled = total_outbreaks * 20, # rescale to match ED visits
+    baseline_scaled = total_outbreaks_prev * 20   # previous 3-season average
+  )
+
+p <- ggplot(plot_df, aes(x = Epidemiological_Week)) +
+  
+  # Respiratory ED visits by age group
+  geom_line(aes(y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
+                color = Age_Category),
+            size = 1) +
+  
+  # Total outbreaks (rescaled)
+  geom_line(aes(y = total_outbreaks_scaled),
+            color = "blue", linetype = "dashed", size = 1,
+            alpha = 0.7) +
+  
+  # Historical baseline
+  geom_ribbon(aes(ymin = 0, ymax = baseline_scaled),
+              fill = "lightblue", alpha = 0.2) +
+  
+  labs(
+    title = "Respiratory ED Visits vs. Institutional Outbreaks in Ottawa",
+    y = "ED Visits / Outbreaks (scaled)",
+    x = "Week",
+    color = "Age Group"
+  ) +
+  theme_minimal(base_size = 14)
+
+# Make interactive
+ggplotly(p, tooltip = c("x", "y", "color"))
+```
+
+## VIII. Edpidemiological curve
+
+```{r}
+ggplot(merged, aes(Epidemiological_Week)) +
+  geom_line(aes(y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals),
+            colour = "red") +
+  geom_line(aes(y = total_outbreaks * 20), 
+            colour = "blue")
+```
+
+(Multiplying outbreaks by 20 rescales them to match the magnitude of ED visits, allowing both series to be visualized on the same plot.)
