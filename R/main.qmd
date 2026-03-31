@@ -6,34 +6,46 @@ execute:
     message: false
 author: "Sofia Balaceanu"
 date: "2026-04-02"
+toc: true
 ---
+
+## I. Motivation
+
+![](images/rladies-2.png){width="178"}
 
 ## I. Data Sources
 
+![](images/paste-2.jpeg){width="137"}
+
 This analysis uses two open datasets published by Ottawa Public Health.
 
-1.  **Dataset A: Emergency department visits**
+::: panel-tabset
+## Emergency Department Visits
 
-    Columns are:
+This dataset measures healthcare burden and contains weekly counts of emergency department (ED) visits.
 
-    -   `Epidemiological_Week`
-    -   `Age_Category`
-    -   `All_Causes_ED_Visits_to_Ottawa_Hospitals`
-    -   `Respiratory_related_ED_Visits_to_Ottawa_Hospitals`
-    -   `% respiratory`
+```{r}
+#| echo = FALSE
+library(tidyverse)
+library(lubridate)
+library(here)
+library(DT)
 
-    This dataset measures healthcare burden and contains weekly counts of emergency department (ED) visits.
+ed <- read.csv(here("data", "All_causes_and_respiratory_related_emergency.csv"), header = TRUE)
+datatable(ed)
+```
 
-2.  **Dataset B: Respiratory Outbreaks (Excluding COVID)**
+## Respiratory Outbreaks (Excluding COVID-19)
 
-    Columns are:
+This dataset measures disease activity across institutional settings such as schools, healthcare facilities, and congregate care environments.
 
-    -   `Week_Number`
-    -   `Start_of_the_Week`
-    -   `Number_of_Respiratory_Outbreaks`
-    -   Historical baselines (previous 3-season average, pre-COVID average)
+```{r}
+#| echo = FALSE
+outbreaks <- read.csv(here("data", "Respiratory_Outbreaks_(excluding_COVID-19).csv"), header = TRUE)
 
-    This dataset measures disease activity across institutional settings such as schools, healthcare facilities, and congregate care environments.
+datatable(outbreaks)
+```
+:::
 
 Together, these datasets allow us to explore the relationship:
 
@@ -60,6 +72,9 @@ library(here)
 ed <- read.csv(here("data", "All_causes_and_respiratory_related_emergency.csv"), header = TRUE)
 outbreaks <- read.csv(here("data", "Respiratory_Outbreaks_(excluding_COVID-19).csv"), header = TRUE)
 
+merged <- ed |>
+        left_join(outbreaks, by = c("Epidemiological_Week" = "Start_of_the_Week"))
+
 # head(ed)
 # head(outbreaks)
 # Align weeks
@@ -68,9 +83,6 @@ ed <- ed |>
 
 outbreaks <- outbreaks |> 
         mutate(Start_of_the_Week = ymd(Start_of_the_Week))
-
-merged <- ed |>
-        left_join(outbreaks, by = c("Epidemiological_Week" = "Start_of_the_Week"))
 ```
 
 Outbreak variables were renamed for readability and aggregated into a total outbreak measure:
