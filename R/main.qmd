@@ -10,24 +10,41 @@ toc: true
 ---
 
 ## I. Motivation
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
 
+<div style="flex: 1; min-width: 250px;">
 Respiratory illnesses place a recurring seasonal burden on healthcare systems. Understanding how outbreaks translate into emergency department (ED) visits can help anticipate healthcare demand and identify vulnerable populations.
 
 This project investigates how institutional respiratory outbreaks relate to ED utilization in Ottawa, with a focus on age-specific effects and seasonal dynamics.
 
-This project was as a submission to the R Ladies Ottawa 2026 Data Challenge. To learn more about R Ladies, visit their Meetup page (Link).
+This project was a submission to the <a href="https://www.meetup.com/r-ladies-ottawa/" target="_blank">R-Ladies Ottawa</a>  International Women's Day Data Challenge.
+</div>
 
-![](images/rladies-2.png){width="178"}
+<div style="flex: 0 0 250px; min-width: 130px;">
+<img src="images/rladies-2.png" alt="Respiratory Outbreaks" style="width: 100%; height: auto;"/>
+</div>
+
+</div>
+
 
 ## II. Data Sources
 
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
+
+<div style="flex: 1; min-width: 250px;">
 This analysis combines two datasets from Ottawa Public Health:
 
--   **Emergency Department Visits**: Weekly counts of respiratory-related visits by age group
+- **Emergency Department Visits**: Weekly counts of respiratory-related visits by age group.  
+- **Respiratory Outbreaks**: Weekly outbreaks in schools, healthcare institutions, and congregate care settings.  
 
--   **Respiratory Outbreaks**: Weekly outbreaks in schools, healthcare institutions, and congregate care settings
+The data allows us to explore how outbreaks affect ED utilization and identify vulnerable populations by age and setting.
+</div>
 
-![](images/paste-2.jpeg){width="137"}
+<div style="flex: 0 0 150px; min-width: 150px;">
+<img src="images/paste-2.jpeg" alt="ED Visits and Outbreaks" style="width: 100%; height: auto;"/>
+</div>
+
+</div>
 
 ::: panel-tabset
 ## Raw Data
@@ -58,7 +75,12 @@ datatable(outbreaks,
 
 ## Sourcing
 
-Links to where i got the data from.
+The datasets were obtained from Ottawa Public Health and provide a measure of healthcare burden through weekly emergency department (ED) visits and reported respiratory outbreaks:
+
+ED Visits: Ottawa Public Health – Emergency Department Data
+Respiratory Outbreaks: Ottawa Public Health – Institutional Outbreak Data
+
+These sources allow for a detailed exploration of the relationship between outbreaks and healthcare utilization in Ottawa.
 :::
 
 ## III. Research questions
@@ -219,7 +241,7 @@ ggplot(merged,
 ## Code
 
 ```{r}
-#| eval = FASLE
+#| eval = FALSE
 
 ggplot(merged,
        aes(x = Epidemiological_Week,
@@ -241,29 +263,56 @@ $$
 (More explanation about what lagging is and why i kept lagging separate by school, health, cong, and one for total)
 
 ```{r}
-merged <- merged |>
+# Step 1: create weekly lag dataset
+lag_df <- merged |>
+  distinct(Epidemiological_Week,
+           total_outbreaks,
+           outbreaks_school,
+           outbreaks_health,
+           outbreaks_congregate) |>
   arrange(Epidemiological_Week) |>
   mutate(
+    lag_total = lag(total_outbreaks, 1),
     lag_school = lag(outbreaks_school, 1),
     lag_health = lag(outbreaks_health, 1),
-    lag_congregate = lag(outbreaks_congregate, 1),
-    lag_total = lag(total_outbreaks, 1)
+    lag_congregate = lag(outbreaks_congregate, 1)
   )
 
+# Step 2: join back to full dataset
+merged <- merged |>
+  left_join(
+    lag_df |> select(Epidemiological_Week,
+                     lag_total,
+                     lag_school,
+                     lag_health,
+                     lag_congregate),
+    by = "Epidemiological_Week"
+  )
+
+# Step 3: drop NA from first week
 analysis_df <- merged |>
-  drop_na(lag_school, lag_health, lag_congregate, lag_total)
+  drop_na(lag_total, lag_school, lag_health, lag_congregate)
 ```
 
 ## VII. Regression Analysis
 
-### **Model 1: Baseline Model (No age interaction)**
+To understand how respiratory outbreaks influence emergency department (ED) visits, we evaluate a series of models with increasing complexity.
 
-**Goal:** Do outbreaks predict ED visits?
+Our goal is to identify a model that balances:
 
--   Which outbreak type predicts ED visits overall?
--   This model assumes outbreaks affect all age groups equally.
+-   **Interpretability** (clear, meaningful effects)
 
-!! Note that the baseline here (intercept) is age catgeory 00-03.
+-   **Predictive performance** (explains variation in ED visits)
+
+-   **Statistical validity** (avoids unnecessary complexity or instability)
+
+### **Model 1: Baseline Model: Do outbreaks predict ED visits?**
+
+We begin with a model that includes lagged outbreak counts and age category, but **no interaction terms**.
+
+This assumes that outbreaks affect all age groups **equally**.
+
+!! **Reference group:** Age 0–3 (baseline category)
 
 ```{r}
 model1 <- lm(Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
@@ -280,31 +329,31 @@ summary(model1)
 | `lag_health`     |          |         |               |
 | `lag_congregate` |          |         |               |
 
-: Do outbreaks predict ED visits?
+: **Do outbreaks predict ED visits?**
 
-**Conclusion:** Two of the three outbreak types significantly predict ED visits.
+### Key Results
 
-Also, age strongly impact ED visits, except for age 18-54.
+-   **Healthcare and congregate care outbreaks** significantly predict ED visits
 
--   Age is a strong predictor of ED visit volume
+-   **School outbreaks are not significant**
 
--   Different age groups use the ED at very different baseline rates.
+-   **Age is a strong predictor** of baseline ED usage
 
--   All negative confirms toddlers (0-3) have the highest respiratory ED use, so every other group is lower.
+### Interpretation
 
-### **Model 2: Interaction Model (Between outbreaks and age)**
+-   Outbreak activity is clearly associated with increases in ED visits
 
-**Goal:** Does the effect of outbreaks differ by age?
+-   However, this model assumes a **constant effect across age groups**, which may be unrealistic
+
+-   Younger children (0–3) have the highest baseline ED usage, with all other groups significantly lower
+
+### **Model 2: Interaction Model (Do outbreak effects differ by age?)**
+
+We now allow the effect of outbreaks to vary across age groups by including interaction terms.
 
 $$
 \text{ED Visits} = \text{(Outbreaks)} \times \text{(Age Category)}
 $$
-
--   Allows the effect of outbreaks to differ across age groups
-
--   The main effects (lag_health, lag_congregate, etc.) now represent the effect for the reference age group only (00–03 years).
-
--   The interaction terms shows how the effect changes for each other age group.
 
 ```{r}
 model2 <- lm(
@@ -327,18 +376,30 @@ summary(model2)
 -   The new question: do outbreak effects differ by age groups
 
 | Predictor | Interpretation |
-|----|----|
+|------------------------------------|------------------------------------|
 | `lag_school x Age` | School outbreaks do not predict ED visits for any age group. |
-| `lag_health x Age` | Healthcare outbreaks predict ED visits across age groups, but the strength varies. It is weaker for  teens and the oldest adults compared to toddlers, and insignificant for young to middle aged adults. |
+| `lag_health x Age` | Healthcare outbreaks predict ED visits across age groups, but the strength varies. It is weaker for teens and the oldest adults compared to toddlers, and insignificant for young to middle aged adults. |
 | `lag_congregate x Age` | Congregate-care outbreaks predict ED visits, but the effect is strongest in the youngest age group. |
 
-**Conclusion:**
+### Key Results
 
--   Do outbreaks predict ED visits? Yes, healthcare and congregate care outbreaks do
+-   **Healthcare and congregate outbreaks remain strong predictors**
 
--   Do outbreak effects differ by age? Yes, especially for congregate care outbreaks
+-   **School outbreaks remain weak or insignificant**
 
-### Model 1 vs. Model 2 comparison
+-   Several interaction terms are statistically significant
+
+### Interpretation
+
+-   The impact of outbreaks **varies across age groups**
+
+-   **Congregate care outbreaks** have the strongest and most consistent effect
+
+-   **Healthcare outbreaks** affect most age groups, but with varying intensity
+
+-   **School outbreaks show little evidence of impact on ED visits**
+
+### Do interactions improve the model?
 
 We compare the full model (main effects + all interactions) vs the reduced model (main affects only) to see if interaction terms add any useful information.
 
@@ -358,154 +419,317 @@ anova(model1, model2)
 
 The p-value is 0.0005604.
 
-This means:
+### Interpretation
 
--   The reduction in residual error (RSS) when adding interactions is statistically significant.
+-   Adding interactions significantly improves model fit
 
--   The interaction terms explain additional variance in ED visits.
+-   The relationship between outbreaks and ED visits is **not constant across age groups**
 
--   Model 2 fits the data significantly better than Model 1.
+We **reject** the null hypothesis and prefer the interaction model over the baseline model.
 
-We **reject** the null hypothesis.
+### Model 3: Aggregated Model (Do we need outbreak categories?)
 
-## VII. Aggregated Outbreak Model
-
-Because outbreak types were strongly correlated, an aggregated outbreak variable was also evaluated.
+Outbreak types are highly correlated (show), so we test a simpler model using **total outbreaks** instead of separating by setting.
 
 ```{r}
-model_age_sensitivity <- lm(
+model3 <- lm(
   Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~
     lag_total * Age_Category,
   data = analysis_df
 )
 
-anova(model_age_sensitivity)
+summary(model3)
 ```
 
-**Result:**
+### Key Results
 
--   Total outbreaks: p \< 0.001
+-   **Total outbreaks are highly significant (p \< 0.001)**
 
--   Age category: p \< 0.001
+-   **Age is highly significant (p \< 0.001)**
 
--   Interaction: p = 0.00025
+-   **Interaction is significant (p = 0.00025)**
 
-This indicates that:
+### Interpretation
 
--   outbreak intensity predicts ED visits
+-   Overall outbreak intensity strongly predicts ED visits
 
--   age strongly influences baseline visit levels
+-   Age remains a dominant factor
 
--   age groups respond differently to increases in outbreaks
+-   Age groups respond differently to increases in outbreaks
 
-Comparing aggregated and disaggregated models:
+### Does separating outbreaks improve prediction?
+
+We compare:
+
+-   **Detailed model:** outbreak types × age
+
+-   **Simplified model:** total outbreaks × age
 
 ```{r}
-anova(model_age_sensitivity, model2)
+AIC(model2, model3)
+BIC(model2, model3)
 ```
 
-The detailed outbreak model provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a reasonable summary predictor.
+## VIII. Model Selection
 
-```{r}
-# Slopes differe = interaction justified
-ggplot(analysis_df,
-       aes(lag_congregate,
-           Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
-           colour = Age_Category)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
-```
+Across all models:
 
-## Does separating by outbreak origin improve prediction? 
+-   The baseline model confirms that outbreaks predict ED visits
 
-```{r}
+-   The interaction model shows that this effect varies by age
 
-model_separate <- lm(
-  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ (lag_school + lag_health + lag_congregate) * Age_Category,
-  data = analysis_df
-)
+-   The detailed model adds complexity but limited additional explanatory power
 
-model_total <- lm(
-  Respiratory_related_ED_Visits_to_Ottawa_Hospitals ~ lag_total * Age_Category,
-  data = analysis_df
-)
+### Final Choice
 
-anova(model_total, model_separate) # note sure if this even makes sense 
-```
+We select the **lagged total outbreak model with age interaction**: `model3`
 
-Testing: Does breaking outbreaks into school/health/congregate + interactions improve prediction compared to using only total outbreaks? (H_0: Simple model is sufficient vs. H_a: The complex model explains more variance).
+### Justification
 
-If p-value small, the detailed outbreak categories provide significantly better predictive power.
+-   **Conceptually sound**: incorporates lag between outbreak and ED visits
 
--   With a p-value of 0.099, we fail to reject the null hypothesis at the 5% level. At a 10% level we would reject the null, so the difference is marginally significant.
+-   **Statistically strong**: high explanatory power with significant predictors
 
-An F-test comparing the two models suggested that incorporating outbreak setting and age interactions provided a marginal improvement in model fit (p = 0.099), though not statistically significant at the 5% level.
+-   **Parsimonious**: avoids multicollinearity and overfitting
 
-A linear model including total respiratory outbreaks and age category explained a substantial proportion of variation in respiratory-related emergency visits. Both outbreak activity and age were highly significant predictors (p \< 0.001). The interaction between age and outbreak activity was also significant (p = 0.0003), indicating that increases in outbreaks affected age groups differently. Models that separated outbreaks by setting (school, healthcare, congregate) provided only a modest improvement in fit (p = 0.042), suggesting that total outbreak burden is a sufficient summary measure for predicting emergency department utilization.
+-   **Interpretable**: provides clear, actionable insights
 
-**Good text**
-
-A baseline model including total respiratory outbreaks and age category explained a substantial proportion of variation in respiratory‑related ED visits. Adding an interaction between total outbreaks and age significantly improved model fit (F‑test p = 0.0003), indicating that the impact of outbreak activity differs across age groups.
-
-To test whether separating outbreaks by setting (school, healthcare, congregate) provided additional predictive value, we compared a model using total outbreaks × age with a model including setting‑specific outbreaks × age. This comparison showed only a marginal improvement in fit (F‑test p = 0.099), not statistically significant at the 5% level.
-
-**Overall, total outbreak burden is a sufficient summary measure for predicting ED visits, and separating outbreaks by setting provides only modest additional explanatory power.**
-
-## VIII. Model diagnostics
-
-### Check model fit (odel 2)
+## IX. Model diagnostics
 
 ::: panel-tabset
-## Residual vs Fitted
+## Residual Diagnostics
 
 ```{r}
-par(mfrow = c(2,2))
-plot(model2)
-
-par(mfrow = c(2,2))
-plot(model_total)
+#| echo = FALSE
+plot(model2, which = 1)  # Residuals vs Fitted
+plot(model2, which = 2)  # Q-Q plot
 ```
 
--   LOESS line is fairly flat, suggesting the linearity assumption is not badly violated
+-   Slight curvature → mild nonlinearity
+-   Some spread → mild heteroscedasticity
+-   Q-Q mostly linear → normality acceptable
 
--   A slight curvature indicates the relationship may not be perfectly linear
-
--   Points standing out with outliers: 91, 96, 108
-
-## Q-Q Plot
+## Multicollinearity (VIF)
 
 ```{r}
-plot(model2, which=2)
-```
-
--   Most points fall along the line, normality mostly fine
-
--   Deviation in the tails, especially upper, driven by the same outliers (91, 96, 108)
-
--   Normality assumption is not really perfect.
-
-## VIF
-
-```{r}
+#| echo = FALSE
 library(car)
-vif(model_age_sensitivity)
 vif(model2)
-vif(model_total)
+vif(model3)
+```
+
+-   Model 2 has **high multicollinearity** (especially interactions)
+-   Outbreak types are **strongly correlated**
+-   Aggregated model reduces this issue
+
+## Model Comparison
+
+```{r}
+#| echo = FALSE
+anova(model3, model2)
+summary(model3)$adj.r.squared
+summary(model2)$adj.r.squared
+```
+
+-   Fit improvement is **small / marginal**
+
+-   Barely statistically significant at 5%
+
+-   R² difference is tiny
+
+## Influence and Outliers (1)
+
+```{r}
+plot(model2, which = 4)  # Cook's distance
+plot(model3, which = 4)  # Cook's distance
+```
+
+-   A few influential points exist
+
+-   More complex model is **more sensitive to them**
+
+## Influence and Outliers (2)
+
+```{r}
+plot(model2, which = 5)  # Residuals vs leverage
+plot(model3, which = 5)  # Residuals vs leverage
 ```
 :::
 
-The linear model fit is overall acceptable but not flawless, the biggest issues being a handful of influential outliers, slight nonlinearity and mild heteroscedasticity (variance of errors terms not constant across all levels of independent variables)
+The detailed model (Model 2), which separates outbreaks by setting, provides the best statistical fit (Adjusted R² = 0.765, AIC = 1715). However, this improvement over the aggregated model (Model 3) is relatively modest.
+
+Model 2 includes a large number of interaction terms, many of which are not statistically significant, and exhibits signs of multicollinearity. This makes interpretation difficult and increases sensitivity to influential observations.
+
+In contrast, Model 3 (using total outbreaks) achieves comparable explanatory power (Adjusted R² = 0.722, AIC = 1731) while remaining substantially simpler and more interpretable. The key relationships, that outbreak intensity predicts ED visits and that this effect varies by age, remain clearly visible.
+
+**For these reasons, Model 3 is selected as the final model**, prioritizing interpretability and robustness over marginal improvements in fit.
+
+## X. Model 3: Doing stuff now 
+
+### Visulizing Age-Specific Effects
+
+::: panel-tabset
+## Plot
 
 ```{r}
-# good plot
+#| echo = FALSE
+
+ggplot(analysis_df,
+       aes(x = lag_total,
+           y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
+           color = Age_Category)) +
+  geom_point(alpha = 1, size = 1.8) +
+  geom_smooth(method = "lm", se = FALSE, size = 1.2) +
+  theme_minimal() +
+  labs(
+    title = "Relationship Between Outbreaks and ED Visits by Age Group",
+    x = "Lagged Total Outbreaks",
+    y = "Respiratory ED Visits"
+  )
+```
+
+This figure illustrates the relationship between lagged outbreak activity and emergency department visits across age groups.
+
+-   ED visits increase as outbreak activity rises
+
+-   The slope of this relationship differs across age groups
+
+-   Younger age groups show a steeper increase, indicating greater sensitivity to outbreaks
+
+These differences in slope visually confirm the presence of **interaction effects**, supporting the inclusion of an interaction term between outbreaks and age in the regression model.
+
+## Code
+
+```{r}
+#| eval = FALSE
+
+ggplot(analysis_df,
+       aes(x = lag_total,
+           y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
+           color = Age_Category)) +
+  geom_point(alpha = 1, size = 1.8) +
+  geom_smooth(method = "lm", se = FALSE, size = 1.2) +
+  theme_minimal() +
+  labs(
+    title = "Relationship Between Outbreaks and ED Visits by Age Group",
+    x = "Lagged Total Outbreaks",
+    y = "Respiratory ED Visits"
+  )
+```
+:::
+
+### Effect sizes
+
+```{r}
+library(broom)
+library(dplyr)
+
+tidy(model3) |>
+  filter(term == "lag_total" | grepl("lag_total:Age_Category", term))
+
+coef(model3)
+
+# baseline (00–03)
+base_effect <- coef(model3)["lag_total"]
+
+# example: 12–17
+teen_effect <- base_effect + coef(model3)["lag_total:Age_Category12 to 17 Years"]
+
+base_effect
+teen_effect
+```
+
+A one-unit increase in outbreaks is associated with approximately 15 additional ED visits among children aged 0–3, but only \~1–2 additional visits among teenagers, indicating much lower sensitivity.
+
+### Predicted lines
+
+```{r}
 library(ggplot2)
 
 ggplot(analysis_df,
        aes(x = lag_total,
            y = Respiratory_related_ED_Visits_to_Ottawa_Hospitals,
            color = Age_Category)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE, size = 1.2) +
+  labs(
+    title = "Effect of Respiratory Outbreaks on ED Visits by Age Group",
+    x = "Lagged Total Outbreaks",
+    y = "Respiratory ED Visits",
+    color = "Age Group"
+  ) +
+  theme_minimal(base_size = 14)
+```
+
+The slope of each line represents how strongly ED visits respond to increases in outbreak activity. Younger age groups show steeper slopes, indicating higher sensitivity to outbreaks, while older groups exhibit flatter responses.
+
+### Scenario comparison
+
+```{r}
+library(tidyr)
+
+scenario_df <- expand_grid(
+  lag_total = c(2, 15),  # low vs high outbreaks
+  Age_Category = unique(analysis_df$Age_Category)
+)
+
+scenario_df$predicted_ED <- predict(model3, newdata = scenario_df)
+
+scenario_df
+
+library(knitr)
+
+kable(scenario_df,
+      col.names = c("Outbreak Level", "Age Group", "Predicted ED Visits"))
+
+library(gt)
+
+scenario_df <- expand_grid(
+  lag_total = c(2, 15),  # low vs high outbreaks
+  Age_Category = unique(analysis_df$Age_Category)
+)
+
+scenario_df$predicted_ED <- predict(model3, newdata = scenario_df)
+
+# Pretty table
+scenario_df %>%
+  mutate(
+    lag_total = ifelse(lag_total == 2, "Low (2 outbreaks)", "High (15 outbreaks)")
+  ) %>%
+  gt() %>%
+  tab_header(
+    title = "Predicted Respiratory ED Visits by Age Group",
+    subtitle = "Comparison under low vs high outbreak scenarios"
+  ) %>%
+  cols_label(
+    lag_total = "Outbreak Level",
+    Age_Category = "Age Group",
+    predicted_ED = "Predicted ED Visits"
+  ) %>%
+  fmt_number(
+    columns = vars(predicted_ED),
+    decimals = 0
+  ) %>%
+  tab_options(
+    table.font.size = px(14)
+  )
+```
+
+When outbreaks increase from 2 to 15 per week, predicted ED visits rise sharply for young children but much less for older age groups. This highlights that outbreak surges disproportionately impact younger populations.
+
+```{r}
+ggplot(scenario_df,
+       aes(x = Age_Category,
+           y = predicted_ED,
+           fill = factor(lag_total))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Predicted ED Visits Under Low vs High Outbreak Scenarios",
+    x = "Age Group",
+    y = "Predicted ED Visits",
+    fill = "Outbreak Level"
+  ) +
+  theme_minimal(base_size = 14)
 ```
 
 ## IX. Comparison with historical baselines
