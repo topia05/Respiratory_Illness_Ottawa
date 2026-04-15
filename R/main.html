@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sofia Balaceanu">
-<meta name="dcterms.date" content="2026-04-02">
+<meta name="dcterms.date" content="2026-04-17">
 
 <title>Respiratory Illness Patterns in Ottawa</title>
 <style>
@@ -151,15 +151,19 @@ window.Quarto = {
   <li><a href="#do-interactions-improve-the-model" id="toc-do-interactions-improve-the-model" class="nav-link" data-scroll-target="#do-interactions-improve-the-model">Do interactions improve the model?</a></li>
   <li><a href="#model-3-aggregated-outbreak-model-do-we-need-outbreak-categories" id="toc-model-3-aggregated-outbreak-model-do-we-need-outbreak-categories" class="nav-link" data-scroll-target="#model-3-aggregated-outbreak-model-do-we-need-outbreak-categories">Model 3: Aggregated Outbreak Model (Do we need outbreak categories?)</a></li>
   </ul></li>
-  <li><a href="#viii.-model-selection" id="toc-viii.-model-selection" class="nav-link" data-scroll-target="#viii.-model-selection">VIII. Model Selection</a></li>
-  <li><a href="#x.-interpreting-the-final-model" id="toc-x.-interpreting-the-final-model" class="nav-link" data-scroll-target="#x.-interpreting-the-final-model">X. Interpreting the Final Model</a>
+  <li><a href="#viii.-model-selection" id="toc-viii.-model-selection" class="nav-link" data-scroll-target="#viii.-model-selection">VIII. Model Selection</a>
+  <ul class="collapse">
+  <li><a href="#final-model-selection" id="toc-final-model-selection" class="nav-link" data-scroll-target="#final-model-selection">Final model selection</a></li>
+  </ul></li>
+  <li><a href="#ix.-interpreting-the-final-model" id="toc-ix.-interpreting-the-final-model" class="nav-link" data-scroll-target="#ix.-interpreting-the-final-model">IX. Interpreting the Final Model</a>
   <ul class="collapse">
   <li><a href="#age-specific-effects-of-outbreaks" id="toc-age-specific-effects-of-outbreaks" class="nav-link" data-scroll-target="#age-specific-effects-of-outbreaks">Age-Specific Effects of Outbreaks</a></li>
   <li><a href="#effect-sizes" id="toc-effect-sizes" class="nav-link" data-scroll-target="#effect-sizes">Effect sizes</a></li>
   <li><a href="#scenario-comparison" id="toc-scenario-comparison" class="nav-link" data-scroll-target="#scenario-comparison">Scenario comparison</a></li>
   </ul></li>
-  <li><a href="#ix.-key-findings" id="toc-ix.-key-findings" class="nav-link" data-scroll-target="#ix.-key-findings">IX. Key Findings</a></li>
-  <li><a href="#x.-public-health-implications" id="toc-x.-public-health-implications" class="nav-link" data-scroll-target="#x.-public-health-implications">X. Public Health Implications</a></li>
+  <li><a href="#x.-key-findings" id="toc-x.-key-findings" class="nav-link" data-scroll-target="#x.-key-findings">X. Key Findings</a></li>
+  <li><a href="#xi.-public-health-implications" id="toc-xi.-public-health-implications" class="nav-link" data-scroll-target="#xi.-public-health-implications">XI. Public Health Implications</a></li>
+  <li><a href="#xii.-limitations" id="toc-xii.-limitations" class="nav-link" data-scroll-target="#xii.-limitations">XII. Limitations</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -185,7 +189,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 2, 2026</p>
+      <p class="date">April 17, 2026</p>
     </div>
   </div>
   
@@ -233,12 +237,12 @@ window.Quarto = {
 <p>This dataset measures healthcare burden and contains weekly counts of emergency department (ED) visits.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-4eaa82ddb58e1f1b7d7b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4eaa82ddb58e1f1b7d7b">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: black; font-weight: bold; font-size: 20px;\">All causes and respiratory related emergency<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162"],["2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/25","2026/01/25","2026/01/25","2026/01/25","2025/08/24","2026/01/25","2026/01/25","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2025/08/24","2025/08/24","2025/08/24","2025/08/24","2025/08/24","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/19","2025/10/19","2025/10/19","2025/10/19","2025/10/19","2025/10/19"],["00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","00 to 03 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years"],[511,389,443,3121,1888,765,558,456,406,3400,1877,779,539,438,386,3143,1877,710,629,472,427,3058,1776,712,666,608,506,3276,1844,796,750,678,477,3289,1927,682,856,694,416,3282,1879,723,868,585,343,3299,1984,773,788,449,236,2933,1955,755,584,333,293,3009,2096,794,471,334,381,3133,2103,781,486,361,333,3101,1889,669,496,408,333,3052,1719,685,514,377,301,2881,431,1729,687,513,401,376,3096,1835,752,513,428,381,3084,1729,661,490,435,383,2993,1861,785,505,418,457,3043,1791,728,428,329,3358,1990,743,457,452,409,3415,1987,761,437,545,532,3194,2103,712,485,538,480,3219,1951,772,512,519,498,3355,1909,729,522,518,477,3492,1905,744,494,506,451,3334,1939,710,546,450,371,3231,1966,715,519,432,504,3410,1851,806],[237,79,26,172,150,65,246,123,29,236,183,84,243,112,36,248,187,76,304,155,54,225,148,73,355,265,97,306,161,79,476,343,117,352,205,98,576,364,98,437,245,120,603,320,67,478,282,116,486,210,41,371,306,125,315,97,25,318,293,135,209,48,17,292,231,98,218,58,23,234,185,73,206,83,28,226,138,62,253,87,13,211,154,182,92,217,69,24,228,177,74,226,92,21,203,186,67,220,83,24,236,190,81,204,86,33,209,189,69,61,24,198,149,82,147,73,24,204,141,84,157,119,46,195,150,60,206,127,34,224,144,80,214,128,42,235,143,71,225,107,37,253,152,74,207,109,29,220,159,67,249,84,19,227,163,62,237,85,35,216,177,71],["46.4%","20.3%","5.9%","5.5%","7.9%","8.5%","44.1%","27.0%","7.1%","6.9%","9.8%","10.8%","45.1%","25.6%","9.3%","7.9%","10.0%","10.7%","48.3%","32.8%","12.6%","7.4%","8.3%","10.2%","53.3%","43.6%","19.2%","9.3%","8.7%","9.9%","63.5%","50.6%","24.5%","10.7%","10.6%","14.4%","67.3%","52.4%","23.6%","13.3%","13.0%","16.6%","69.5%","54.7%","19.5%","14.5%","14.2%","15.0%","61.7%","46.8%","17.4%","12.6%","15.6%","16.6%","53.9%","29.1%","8.5%","10.6%","14.0%","17.0%","44.4%","14.4%","4.5%","9.3%","11.0%","12.6%","44.9%","16.1%","6.9%","7.5%","9.8%","10.9%","41.5%","20.3%","8.4%","7.4%","8.0%","9.0%","49.2%","23.1%","4.3%","7.3%","35.7%","10.5%","13.4%","42.3%","17.2%","6.4%","7.4%","9.6%","9.8%","44.0%","21.5%","5.5%","6.6%","10.8%","10.1%","44.9%","19.1%","6.3%","7.9%","10.2%","10.3%","40.4%","20.6%","7.2%","6.9%","10.5%","9.5%","14.2%","7.3%","5.9%","7.5%","11.0%","32.2%","16.2%","5.9%","6.0%","7.1%","11.0%","35.9%","21.8%","8.6%","6.1%","7.1%","8.4%","42.5%","23.6%","7.1%","7.0%","7.4%","10.4%","41.8%","24.7%","8.4%","7.0%","7.5%","9.7%","43.1%","20.7%","7.8%","7.2%","8.0%","10.0%","41.9%","21.5%","6.4%","6.6%","8.2%","9.4%","45.6%","18.7%","5.1%","7.0%","8.3%","8.7%","45.7%","19.7%","6.9%","6.3%","9.6%","8.8%"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Epidemiological_Week<\/th>\n      <th>Age_Category<\/th>\n      <th>All_Causes_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>Respiratory_related_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals<\/th>\n      <th>ObjectId<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Epidemiological_Week","targets":1},{"name":"Age_Category","targets":2},{"name":"All_Causes_ED_Visits_to_Ottawa_Hospitals","targets":3},{"name":"Respiratory_related_ED_Visits_to_Ottawa_Hospitals","targets":4},{"name":"F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals","targets":5},{"name":"ObjectId","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-2a2e0062beb9bfa14867" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-2a2e0062beb9bfa14867">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: black; font-weight: bold; font-size: 20px;\">All causes and respiratory related emergency<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162"],["2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/10/26","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/02","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/09","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/16","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/11/30","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/07","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/14","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/21","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2025/12/28","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/04","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/11","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/18","2026/01/25","2026/01/25","2026/01/25","2026/01/25","2025/08/24","2026/01/25","2026/01/25","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/01","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/08","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/15","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2026/02/22","2025/08/24","2025/08/24","2025/08/24","2025/08/24","2025/08/24","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/08/31","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/07","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/14","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/21","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/09/28","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/05","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/12","2025/10/19","2025/10/19","2025/10/19","2025/10/19","2025/10/19","2025/10/19"],["00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","00 to 03 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years"],[511,389,443,3121,1888,765,558,456,406,3400,1877,779,539,438,386,3143,1877,710,629,472,427,3058,1776,712,666,608,506,3276,1844,796,750,678,477,3289,1927,682,856,694,416,3282,1879,723,868,585,343,3299,1984,773,788,449,236,2933,1955,755,584,333,293,3009,2096,794,471,334,381,3133,2103,781,486,361,333,3101,1889,669,496,408,333,3052,1719,685,514,377,301,2881,431,1729,687,513,401,376,3096,1835,752,513,428,381,3084,1729,661,490,435,383,2993,1861,785,505,418,457,3043,1791,728,428,329,3358,1990,743,457,452,409,3415,1987,761,437,545,532,3194,2103,712,485,538,480,3219,1951,772,512,519,498,3355,1909,729,522,518,477,3492,1905,744,494,506,451,3334,1939,710,546,450,371,3231,1966,715,519,432,504,3410,1851,806],[237,79,26,172,150,65,246,123,29,236,183,84,243,112,36,248,187,76,304,155,54,225,148,73,355,265,97,306,161,79,476,343,117,352,205,98,576,364,98,437,245,120,603,320,67,478,282,116,486,210,41,371,306,125,315,97,25,318,293,135,209,48,17,292,231,98,218,58,23,234,185,73,206,83,28,226,138,62,253,87,13,211,154,182,92,217,69,24,228,177,74,226,92,21,203,186,67,220,83,24,236,190,81,204,86,33,209,189,69,61,24,198,149,82,147,73,24,204,141,84,157,119,46,195,150,60,206,127,34,224,144,80,214,128,42,235,143,71,225,107,37,253,152,74,207,109,29,220,159,67,249,84,19,227,163,62,237,85,35,216,177,71],["46.4%","20.3%","5.9%","5.5%","7.9%","8.5%","44.1%","27.0%","7.1%","6.9%","9.8%","10.8%","45.1%","25.6%","9.3%","7.9%","10.0%","10.7%","48.3%","32.8%","12.6%","7.4%","8.3%","10.2%","53.3%","43.6%","19.2%","9.3%","8.7%","9.9%","63.5%","50.6%","24.5%","10.7%","10.6%","14.4%","67.3%","52.4%","23.6%","13.3%","13.0%","16.6%","69.5%","54.7%","19.5%","14.5%","14.2%","15.0%","61.7%","46.8%","17.4%","12.6%","15.6%","16.6%","53.9%","29.1%","8.5%","10.6%","14.0%","17.0%","44.4%","14.4%","4.5%","9.3%","11.0%","12.6%","44.9%","16.1%","6.9%","7.5%","9.8%","10.9%","41.5%","20.3%","8.4%","7.4%","8.0%","9.0%","49.2%","23.1%","4.3%","7.3%","35.7%","10.5%","13.4%","42.3%","17.2%","6.4%","7.4%","9.6%","9.8%","44.0%","21.5%","5.5%","6.6%","10.8%","10.1%","44.9%","19.1%","6.3%","7.9%","10.2%","10.3%","40.4%","20.6%","7.2%","6.9%","10.5%","9.5%","14.2%","7.3%","5.9%","7.5%","11.0%","32.2%","16.2%","5.9%","6.0%","7.1%","11.0%","35.9%","21.8%","8.6%","6.1%","7.1%","8.4%","42.5%","23.6%","7.1%","7.0%","7.4%","10.4%","41.8%","24.7%","8.4%","7.0%","7.5%","9.7%","43.1%","20.7%","7.8%","7.2%","8.0%","10.0%","41.9%","21.5%","6.4%","6.6%","8.2%","9.4%","45.6%","18.7%","5.1%","7.0%","8.3%","8.7%","45.7%","19.7%","6.9%","6.3%","9.6%","8.8%"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Epidemiological_Week<\/th>\n      <th>Age_Category<\/th>\n      <th>All_Causes_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>Respiratory_related_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals<\/th>\n      <th>ObjectId<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Epidemiological_Week","targets":1},{"name":"Age_Category","targets":2},{"name":"All_Causes_ED_Visits_to_Ottawa_Hospitals","targets":3},{"name":"Respiratory_related_ED_Visits_to_Ottawa_Hospitals","targets":4},{"name":"F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals","targets":5},{"name":"ObjectId","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-180a860846e5e33f5128" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-180a860846e5e33f5128">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: black; font-weight: bold; font-size: 20px;\">Respiratory Outbreaks (excluding COVID-19)<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27"],[47,48,49,52,1,2,3,4,5,6,7,8,35,36,37,38,39,40,41,42,43,44,45,46,50,51,53],["2025/11/16","2025/11/23","2025/11/30","2025/12/21","2026/01/04","2026/01/11","2026/01/18","2026/01/25","2026/02/01","2026/02/08","2026/02/15","2026/02/22","2025/08/24","2025/08/31","2025/09/07","2025/09/14","2025/09/21","2025/09/28","2025/10/05","2025/10/12","2025/10/19","2025/10/26","2025/11/02","2025/11/09","2025/12/07","2025/12/14","2025/12/28"],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],[6,6,15,15,6,7,3,10,4,6,8,3,5,2,2,3,6,6,0,2,4,5,3,1,13,16,14],[1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[6.3,2.7,3.3,0,0,0,0,0,0.3,0,0,0,0,0.3,0,0,0,0.3,0,2,4,5.7,10.7,6.3,0.7,0,null],[3.7,5,5,5.3,4.3,10,7,7,3.3,6.7,7.3,6.7,1.7,1,1.3,1,1.3,3.3,7,1.7,2.7,2,1.7,2.3,6.3,3.7,null],[0,0.3,0,0,0,0,0.3,0,0.3,0.3,0,0.3,0,0,0.3,0,0,0.3,0.3,0,0,0.3,0,0,0.3,0.3,null],[0.7,0.3,0,0,0,2.3,1.7,1.3,2.3,0.3,0.7,1,0,0,0,0.3,0,0,0.3,0,0,0,0,0.7,0.3,0,null],[0.3,1,4,8.699999999999999,15,17,11.3,9.300000000000001,9.300000000000001,7,11,11,0.3,0.7,1.3,1.7,1,3.7,1,1.7,1,1.3,1.3,1,3,4.7,null],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week_Number<\/th>\n      <th>Start_of_the_Week<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care<\/th>\n      <th>ObjectId<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week_Number","targets":1},{"name":"Start_of_the_Week","targets":2},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care","targets":3},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions","targets":4},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care","targets":5},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care","targets":6},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions","targets":7},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care","targets":8},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care","targets":9},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions","targets":10},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care","targets":11},{"name":"ObjectId","targets":12}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7bfa78f58fe183e03697" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7bfa78f58fe183e03697">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: black; font-weight: bold; font-size: 20px;\">Respiratory Outbreaks (excluding COVID-19)<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27"],[47,48,49,52,1,2,3,4,5,6,7,8,35,36,37,38,39,40,41,42,43,44,45,46,50,51,53],["2025/11/16","2025/11/23","2025/11/30","2025/12/21","2026/01/04","2026/01/11","2026/01/18","2026/01/25","2026/02/01","2026/02/08","2026/02/15","2026/02/22","2025/08/24","2025/08/31","2025/09/07","2025/09/14","2025/09/21","2025/09/28","2025/10/05","2025/10/12","2025/10/19","2025/10/26","2025/11/02","2025/11/09","2025/12/07","2025/12/14","2025/12/28"],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],[6,6,15,15,6,7,3,10,4,6,8,3,5,2,2,3,6,6,0,2,4,5,3,1,13,16,14],[1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[6.3,2.7,3.3,0,0,0,0,0,0.3,0,0,0,0,0.3,0,0,0,0.3,0,2,4,5.7,10.7,6.3,0.7,0,null],[3.7,5,5,5.3,4.3,10,7,7,3.3,6.7,7.3,6.7,1.7,1,1.3,1,1.3,3.3,7,1.7,2.7,2,1.7,2.3,6.3,3.7,null],[0,0.3,0,0,0,0,0.3,0,0.3,0.3,0,0.3,0,0,0.3,0,0,0.3,0.3,0,0,0.3,0,0,0.3,0.3,null],[0.7,0.3,0,0,0,2.3,1.7,1.3,2.3,0.3,0.7,1,0,0,0,0.3,0,0,0.3,0,0,0,0,0.7,0.3,0,null],[0.3,1,4,8.699999999999999,15,17,11.3,9.300000000000001,9.300000000000001,7,11,11,0.3,0.7,1.3,1.7,1,3.7,1,1.7,1,1.3,1.3,1,3,4.7,null],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week_Number<\/th>\n      <th>Start_of_the_Week<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions<\/th>\n      <th>Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions<\/th>\n      <th>Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions<\/th>\n      <th>Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care<\/th>\n      <th>ObjectId<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week_Number","targets":1},{"name":"Start_of_the_Week","targets":2},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Licensed_Child_Care","targets":3},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions","targets":4},{"name":"Number_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care","targets":5},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Schools__Camps__and_Child_Care","targets":6},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Healthcare_Institutions","targets":7},{"name":"Previous_3_Season_Average_of_Respiratory_Outbreaks__Excl__COVID_19__in_Congregate_Care","targets":8},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Schools__Camps__and_Child_Care","targets":9},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Healthcare_Institutions","targets":10},{"name":"Prior_to_COVID_19_3_Season_Average_of_Respiratory_Outbreaks_in_Congregate_Care","targets":11},{"name":"ObjectId","targets":12}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -282,13 +286,13 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="iv.-data-preparation">IV. Data preparation</h2>
 <p>Datasets were cleaned, aligned by epidemiological week, and merged. Outbreak variables were renamed and aggregated into a total outbreak measure.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Clean data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Merged data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-1e88609441a73637ffcb" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1e88609441a73637ffcb">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162"],["2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-25","2026-01-25","2026-01-25","2026-01-25","2025-08-24","2026-01-25","2026-01-25","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2025-08-24","2025-08-24","2025-08-24","2025-08-24","2025-08-24","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-19","2025-10-19","2025-10-19","2025-10-19","2025-10-19","2025-10-19"],["00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","00 to 03 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years"],[511,389,443,3121,1888,765,558,456,406,3400,1877,779,539,438,386,3143,1877,710,629,472,427,3058,1776,712,666,608,506,3276,1844,796,750,678,477,3289,1927,682,856,694,416,3282,1879,723,868,585,343,3299,1984,773,788,449,236,2933,1955,755,584,333,293,3009,2096,794,471,334,381,3133,2103,781,486,361,333,3101,1889,669,496,408,333,3052,1719,685,514,377,301,2881,431,1729,687,513,401,376,3096,1835,752,513,428,381,3084,1729,661,490,435,383,2993,1861,785,505,418,457,3043,1791,728,428,329,3358,1990,743,457,452,409,3415,1987,761,437,545,532,3194,2103,712,485,538,480,3219,1951,772,512,519,498,3355,1909,729,522,518,477,3492,1905,744,494,506,451,3334,1939,710,546,450,371,3231,1966,715,519,432,504,3410,1851,806],[237,79,26,172,150,65,246,123,29,236,183,84,243,112,36,248,187,76,304,155,54,225,148,73,355,265,97,306,161,79,476,343,117,352,205,98,576,364,98,437,245,120,603,320,67,478,282,116,486,210,41,371,306,125,315,97,25,318,293,135,209,48,17,292,231,98,218,58,23,234,185,73,206,83,28,226,138,62,253,87,13,211,154,182,92,217,69,24,228,177,74,226,92,21,203,186,67,220,83,24,236,190,81,204,86,33,209,189,69,61,24,198,149,82,147,73,24,204,141,84,157,119,46,195,150,60,206,127,34,224,144,80,214,128,42,235,143,71,225,107,37,253,152,74,207,109,29,220,159,67,249,84,19,227,163,62,237,85,35,216,177,71],["46.4%","20.3%","5.9%","5.5%","7.9%","8.5%","44.1%","27.0%","7.1%","6.9%","9.8%","10.8%","45.1%","25.6%","9.3%","7.9%","10.0%","10.7%","48.3%","32.8%","12.6%","7.4%","8.3%","10.2%","53.3%","43.6%","19.2%","9.3%","8.7%","9.9%","63.5%","50.6%","24.5%","10.7%","10.6%","14.4%","67.3%","52.4%","23.6%","13.3%","13.0%","16.6%","69.5%","54.7%","19.5%","14.5%","14.2%","15.0%","61.7%","46.8%","17.4%","12.6%","15.6%","16.6%","53.9%","29.1%","8.5%","10.6%","14.0%","17.0%","44.4%","14.4%","4.5%","9.3%","11.0%","12.6%","44.9%","16.1%","6.9%","7.5%","9.8%","10.9%","41.5%","20.3%","8.4%","7.4%","8.0%","9.0%","49.2%","23.1%","4.3%","7.3%","35.7%","10.5%","13.4%","42.3%","17.2%","6.4%","7.4%","9.6%","9.8%","44.0%","21.5%","5.5%","6.6%","10.8%","10.1%","44.9%","19.1%","6.3%","7.9%","10.2%","10.3%","40.4%","20.6%","7.2%","6.9%","10.5%","9.5%","14.2%","7.3%","5.9%","7.5%","11.0%","32.2%","16.2%","5.9%","6.0%","7.1%","11.0%","35.9%","21.8%","8.6%","6.1%","7.1%","8.4%","42.5%","23.6%","7.1%","7.0%","7.4%","10.4%","41.8%","24.7%","8.4%","7.0%","7.5%","9.7%","43.1%","20.7%","7.8%","7.2%","8.0%","10.0%","41.9%","21.5%","6.4%","6.6%","8.2%","9.4%","45.6%","18.7%","5.1%","7.0%","8.3%","8.7%","45.7%","19.7%","6.9%","6.3%","9.6%","8.8%"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162],[44,44,44,44,44,44,45,45,45,45,45,45,46,46,46,46,46,46,47,47,47,47,47,47,48,48,48,48,48,48,49,49,49,49,49,49,50,50,50,50,50,50,51,51,51,51,51,51,52,52,52,52,52,52,53,53,53,53,53,53,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,35,4,4,5,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,8,8,8,8,8,8,35,35,35,35,35,36,36,36,36,36,36,37,37,37,37,37,37,38,38,38,38,38,38,39,39,39,39,39,39,40,40,40,40,40,40,41,41,41,41,41,41,42,42,42,42,42,42,43,43,43,43,43,43],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[5,5,5,5,5,5,3,3,3,3,3,3,1,1,1,1,1,1,6,6,6,6,6,6,6,6,6,6,6,6,15,15,15,15,15,15,13,13,13,13,13,13,16,16,16,16,16,16,15,15,15,15,15,15,14,14,14,14,14,14,6,6,6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,10,10,10,10,5,10,10,4,4,4,4,4,4,6,6,6,6,6,6,8,8,8,8,8,8,3,3,3,3,3,3,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[5.7,5.7,5.7,5.7,5.7,5.7,10.7,10.7,10.7,10.7,10.7,10.7,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,2.7,2.7,2.7,2.7,2.7,2.7,3.3,3.3,3.3,3.3,3.3,3.3,0.7,0.7,0.7,0.7,0.7,0.7,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[2,2,2,2,2,2,1.7,1.7,1.7,1.7,1.7,1.7,2.3,2.3,2.3,2.3,2.3,2.3,3.7,3.7,3.7,3.7,3.7,3.7,5,5,5,5,5,5,5,5,5,5,5,5,6.3,6.3,6.3,6.3,6.3,6.3,3.7,3.7,3.7,3.7,3.7,3.7,5.3,5.3,5.3,5.3,5.3,5.3,null,null,null,null,null,null,4.3,4.3,4.3,4.3,4.3,4.3,10,10,10,10,10,10,7,7,7,7,7,7,7,7,7,7,1.7,7,7,3.3,3.3,3.3,3.3,3.3,3.3,6.7,6.7,6.7,6.7,6.7,6.7,7.3,7.3,7.3,7.3,7.3,7.3,6.7,6.7,6.7,6.7,6.7,6.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,3.3,3.3,3.3,3.3,3.3,3.3,7,7,7,7,7,7,1.7,1.7,1.7,1.7,1.7,1.7,2.7,2.7,2.7,2.7,2.7,2.7],[0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,2.3,2.3,2.3,2.3,2.3,2.3,1.7,1.7,1.7,1.7,1.7,1.7,1.3,1.3,1.3,1.3,0,1.3,1.3,2.3,2.3,2.3,2.3,2.3,2.3,0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0],[1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1,1,1,1,1,1,0.3,0.3,0.3,0.3,0.3,0.3,1,1,1,1,1,1,4,4,4,4,4,4,3,3,3,3,3,3,4.7,4.7,4.7,4.7,4.7,4.7,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,null,null,null,null,null,null,15,15,15,15,15,15,17,17,17,17,17,17,11.3,11.3,11.3,11.3,11.3,11.3,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,0.3,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,7,7,7,7,7,7,11,11,11,11,11,11,11,11,11,11,11,11,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,3.7,3.7,3.7,3.7,3.7,3.7,1,1,1,1,1,1,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[22,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,25,25,25,25,25,25,26,26,26,26,26,26,4,4,4,4,4,4,27,27,27,27,27,27,5,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,8,8,8,8,13,8,8,9,9,9,9,9,9,10,10,10,10,10,10,11,11,11,11,11,11,12,12,12,12,12,12,13,13,13,13,13,14,14,14,14,14,14,15,15,15,15,15,15,16,16,16,16,16,16,17,17,17,17,17,17,18,18,18,18,18,18,19,19,19,19,19,19,20,20,20,20,20,20,21,21,21,21,21,21],[5,5,5,5,5,5,3,3,3,3,3,3,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,16,16,16,16,16,16,13,13,13,13,13,13,16,16,16,16,16,16,16,16,16,16,16,16,14,14,14,14,14,14,6,6,6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,10,10,10,10,5,10,10,4,4,4,4,4,4,6,6,6,6,6,6,8,8,8,8,8,8,3,3,3,3,3,3,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,6,6,6,6,6,6,7,7,7,7,7,7,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[8,8,8,8,8,8,12.4,12.4,12.4,12.4,12.4,12.4,8.6,8.6,8.6,8.6,8.6,8.6,10,10,10,10,10,10,8,8,8,8,8,8,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,7.3,7.3,7.3,7.3,7.3,7.3,4,4,4,4,4,4,5.3,5.3,5.3,5.3,5.3,5.3,null,null,null,null,null,null,4.3,4.3,4.3,4.3,4.3,4.3,10,10,10,10,10,10,7.3,7.3,7.3,7.3,7.3,7.3,7,7,7,7,1.7,7,7,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,7,7,7,7,7,7,7.3,7.3,7.3,7.3,7.3,7.3,7,7,7,7,7,7,1.7,1.7,1.7,1.7,1.7,1.3,1.3,1.3,1.3,1.3,1.3,1.6,1.6,1.6,1.6,1.6,1.6,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,7.3,7.3,7.3,7.3,7.3,7.3,3.7,3.7,3.7,3.7,3.7,3.7,6.7,6.7,6.7,6.7,6.7,6.7],[1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,4,4,4,4,4,4,3.3,3.3,3.3,3.3,3.3,3.3,4.7,4.7,4.7,4.7,4.7,4.7,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,null,null,null,null,null,null,15,15,15,15,15,15,19.3,19.3,19.3,19.3,19.3,19.3,13,13,13,13,13,13,10.6,10.6,10.6,10.6,0.3,10.6,10.6,11.6,11.6,11.6,11.6,11.6,11.6,7.3,7.3,7.3,7.3,7.3,7.3,11.7,11.7,11.7,11.7,11.7,11.7,12,12,12,12,12,12,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1.3,1.3,1.3,1.3,1.3,1.3,2,2,2,2,2,2,1,1,1,1,1,1,3.7,3.7,3.7,3.7,3.7,3.7,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Epidemiological_Week<\/th>\n      <th>Age_Category<\/th>\n      <th>All_Causes_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>Respiratory_related_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals<\/th>\n      <th>ObjectId.x<\/th>\n      <th>Week_Number<\/th>\n      <th>outbreaks_school<\/th>\n      <th>outbreaks_health<\/th>\n      <th>outbreaks_congregate<\/th>\n      <th>prev_avg_school<\/th>\n      <th>prev_avg_health<\/th>\n      <th>prev_avg_congregate<\/th>\n      <th>pre_covid_school<\/th>\n      <th>pre_covid_health<\/th>\n      <th>pre_covid_congregate<\/th>\n      <th>ObjectId.y<\/th>\n      <th>total_outbreaks<\/th>\n      <th>total_outbreaks_prev<\/th>\n      <th>total_outbreaks_pre_covid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Epidemiological_Week","targets":1},{"name":"Age_Category","targets":2},{"name":"All_Causes_ED_Visits_to_Ottawa_Hospitals","targets":3},{"name":"Respiratory_related_ED_Visits_to_Ottawa_Hospitals","targets":4},{"name":"F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals","targets":5},{"name":"ObjectId.x","targets":6},{"name":"Week_Number","targets":7},{"name":"outbreaks_school","targets":8},{"name":"outbreaks_health","targets":9},{"name":"outbreaks_congregate","targets":10},{"name":"prev_avg_school","targets":11},{"name":"prev_avg_health","targets":12},{"name":"prev_avg_congregate","targets":13},{"name":"pre_covid_school","targets":14},{"name":"pre_covid_health","targets":15},{"name":"pre_covid_congregate","targets":16},{"name":"ObjectId.y","targets":17},{"name":"total_outbreaks","targets":18},{"name":"total_outbreaks_prev","targets":19},{"name":"total_outbreaks_pre_covid","targets":20}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-0e6b8eba98877c6a8f16" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0e6b8eba98877c6a8f16">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162"],["2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-10-26","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-02","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-09","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-16","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-23","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-11-30","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-07","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-14","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-21","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2025-12-28","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-04","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-11","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-18","2026-01-25","2026-01-25","2026-01-25","2026-01-25","2025-08-24","2026-01-25","2026-01-25","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-01","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-08","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-15","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2026-02-22","2025-08-24","2025-08-24","2025-08-24","2025-08-24","2025-08-24","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-08-31","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-07","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-14","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-09-28","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-05","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-12","2025-10-19","2025-10-19","2025-10-19","2025-10-19","2025-10-19","2025-10-19"],["00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","00 to 03 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years","00 to 03 Years","04 to 11 Years","12 to 17 Years","18 to 54 Years","55 to 79 Years","80+ Years"],[511,389,443,3121,1888,765,558,456,406,3400,1877,779,539,438,386,3143,1877,710,629,472,427,3058,1776,712,666,608,506,3276,1844,796,750,678,477,3289,1927,682,856,694,416,3282,1879,723,868,585,343,3299,1984,773,788,449,236,2933,1955,755,584,333,293,3009,2096,794,471,334,381,3133,2103,781,486,361,333,3101,1889,669,496,408,333,3052,1719,685,514,377,301,2881,431,1729,687,513,401,376,3096,1835,752,513,428,381,3084,1729,661,490,435,383,2993,1861,785,505,418,457,3043,1791,728,428,329,3358,1990,743,457,452,409,3415,1987,761,437,545,532,3194,2103,712,485,538,480,3219,1951,772,512,519,498,3355,1909,729,522,518,477,3492,1905,744,494,506,451,3334,1939,710,546,450,371,3231,1966,715,519,432,504,3410,1851,806],[237,79,26,172,150,65,246,123,29,236,183,84,243,112,36,248,187,76,304,155,54,225,148,73,355,265,97,306,161,79,476,343,117,352,205,98,576,364,98,437,245,120,603,320,67,478,282,116,486,210,41,371,306,125,315,97,25,318,293,135,209,48,17,292,231,98,218,58,23,234,185,73,206,83,28,226,138,62,253,87,13,211,154,182,92,217,69,24,228,177,74,226,92,21,203,186,67,220,83,24,236,190,81,204,86,33,209,189,69,61,24,198,149,82,147,73,24,204,141,84,157,119,46,195,150,60,206,127,34,224,144,80,214,128,42,235,143,71,225,107,37,253,152,74,207,109,29,220,159,67,249,84,19,227,163,62,237,85,35,216,177,71],["46.4%","20.3%","5.9%","5.5%","7.9%","8.5%","44.1%","27.0%","7.1%","6.9%","9.8%","10.8%","45.1%","25.6%","9.3%","7.9%","10.0%","10.7%","48.3%","32.8%","12.6%","7.4%","8.3%","10.2%","53.3%","43.6%","19.2%","9.3%","8.7%","9.9%","63.5%","50.6%","24.5%","10.7%","10.6%","14.4%","67.3%","52.4%","23.6%","13.3%","13.0%","16.6%","69.5%","54.7%","19.5%","14.5%","14.2%","15.0%","61.7%","46.8%","17.4%","12.6%","15.6%","16.6%","53.9%","29.1%","8.5%","10.6%","14.0%","17.0%","44.4%","14.4%","4.5%","9.3%","11.0%","12.6%","44.9%","16.1%","6.9%","7.5%","9.8%","10.9%","41.5%","20.3%","8.4%","7.4%","8.0%","9.0%","49.2%","23.1%","4.3%","7.3%","35.7%","10.5%","13.4%","42.3%","17.2%","6.4%","7.4%","9.6%","9.8%","44.0%","21.5%","5.5%","6.6%","10.8%","10.1%","44.9%","19.1%","6.3%","7.9%","10.2%","10.3%","40.4%","20.6%","7.2%","6.9%","10.5%","9.5%","14.2%","7.3%","5.9%","7.5%","11.0%","32.2%","16.2%","5.9%","6.0%","7.1%","11.0%","35.9%","21.8%","8.6%","6.1%","7.1%","8.4%","42.5%","23.6%","7.1%","7.0%","7.4%","10.4%","41.8%","24.7%","8.4%","7.0%","7.5%","9.7%","43.1%","20.7%","7.8%","7.2%","8.0%","10.0%","41.9%","21.5%","6.4%","6.6%","8.2%","9.4%","45.6%","18.7%","5.1%","7.0%","8.3%","8.7%","45.7%","19.7%","6.9%","6.3%","9.6%","8.8%"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162],[44,44,44,44,44,44,45,45,45,45,45,45,46,46,46,46,46,46,47,47,47,47,47,47,48,48,48,48,48,48,49,49,49,49,49,49,50,50,50,50,50,50,51,51,51,51,51,51,52,52,52,52,52,52,53,53,53,53,53,53,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,35,4,4,5,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,8,8,8,8,8,8,35,35,35,35,35,36,36,36,36,36,36,37,37,37,37,37,37,38,38,38,38,38,38,39,39,39,39,39,39,40,40,40,40,40,40,41,41,41,41,41,41,42,42,42,42,42,42,43,43,43,43,43,43],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[5,5,5,5,5,5,3,3,3,3,3,3,1,1,1,1,1,1,6,6,6,6,6,6,6,6,6,6,6,6,15,15,15,15,15,15,13,13,13,13,13,13,16,16,16,16,16,16,15,15,15,15,15,15,14,14,14,14,14,14,6,6,6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,10,10,10,10,5,10,10,4,4,4,4,4,4,6,6,6,6,6,6,8,8,8,8,8,8,3,3,3,3,3,3,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[5.7,5.7,5.7,5.7,5.7,5.7,10.7,10.7,10.7,10.7,10.7,10.7,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,6.3,2.7,2.7,2.7,2.7,2.7,2.7,3.3,3.3,3.3,3.3,3.3,3.3,0.7,0.7,0.7,0.7,0.7,0.7,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[2,2,2,2,2,2,1.7,1.7,1.7,1.7,1.7,1.7,2.3,2.3,2.3,2.3,2.3,2.3,3.7,3.7,3.7,3.7,3.7,3.7,5,5,5,5,5,5,5,5,5,5,5,5,6.3,6.3,6.3,6.3,6.3,6.3,3.7,3.7,3.7,3.7,3.7,3.7,5.3,5.3,5.3,5.3,5.3,5.3,null,null,null,null,null,null,4.3,4.3,4.3,4.3,4.3,4.3,10,10,10,10,10,10,7,7,7,7,7,7,7,7,7,7,1.7,7,7,3.3,3.3,3.3,3.3,3.3,3.3,6.7,6.7,6.7,6.7,6.7,6.7,7.3,7.3,7.3,7.3,7.3,7.3,6.7,6.7,6.7,6.7,6.7,6.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,3.3,3.3,3.3,3.3,3.3,3.3,7,7,7,7,7,7,1.7,1.7,1.7,1.7,1.7,1.7,2.7,2.7,2.7,2.7,2.7,2.7],[0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,2.3,2.3,2.3,2.3,2.3,2.3,1.7,1.7,1.7,1.7,1.7,1.7,1.3,1.3,1.3,1.3,0,1.3,1.3,2.3,2.3,2.3,2.3,2.3,2.3,0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0,0,0,0,0,0,0,0,0,0,0,0],[1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1,1,1,1,1,1,0.3,0.3,0.3,0.3,0.3,0.3,1,1,1,1,1,1,4,4,4,4,4,4,3,3,3,3,3,3,4.7,4.7,4.7,4.7,4.7,4.7,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,null,null,null,null,null,null,15,15,15,15,15,15,17,17,17,17,17,17,11.3,11.3,11.3,11.3,11.3,11.3,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,0.3,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,9.300000000000001,7,7,7,7,7,7,11,11,11,11,11,11,11,11,11,11,11,11,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,3.7,3.7,3.7,3.7,3.7,3.7,1,1,1,1,1,1,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[22,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,25,25,25,25,25,25,26,26,26,26,26,26,4,4,4,4,4,4,27,27,27,27,27,27,5,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,8,8,8,8,13,8,8,9,9,9,9,9,9,10,10,10,10,10,10,11,11,11,11,11,11,12,12,12,12,12,12,13,13,13,13,13,14,14,14,14,14,14,15,15,15,15,15,15,16,16,16,16,16,16,17,17,17,17,17,17,18,18,18,18,18,18,19,19,19,19,19,19,20,20,20,20,20,20,21,21,21,21,21,21],[5,5,5,5,5,5,3,3,3,3,3,3,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,16,16,16,16,16,16,13,13,13,13,13,13,16,16,16,16,16,16,16,16,16,16,16,16,14,14,14,14,14,14,6,6,6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,10,10,10,10,5,10,10,4,4,4,4,4,4,6,6,6,6,6,6,8,8,8,8,8,8,3,3,3,3,3,3,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,6,6,6,6,6,6,7,7,7,7,7,7,0,0,0,0,0,0,2,2,2,2,2,2,4,4,4,4,4,4],[8,8,8,8,8,8,12.4,12.4,12.4,12.4,12.4,12.4,8.6,8.6,8.6,8.6,8.6,8.6,10,10,10,10,10,10,8,8,8,8,8,8,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,8.300000000000001,7.3,7.3,7.3,7.3,7.3,7.3,4,4,4,4,4,4,5.3,5.3,5.3,5.3,5.3,5.3,null,null,null,null,null,null,4.3,4.3,4.3,4.3,4.3,4.3,10,10,10,10,10,10,7.3,7.3,7.3,7.3,7.3,7.3,7,7,7,7,1.7,7,7,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,7,7,7,7,7,7,7.3,7.3,7.3,7.3,7.3,7.3,7,7,7,7,7,7,1.7,1.7,1.7,1.7,1.7,1.3,1.3,1.3,1.3,1.3,1.3,1.6,1.6,1.6,1.6,1.6,1.6,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,3.899999999999999,7.3,7.3,7.3,7.3,7.3,7.3,3.7,3.7,3.7,3.7,3.7,3.7,6.7,6.7,6.7,6.7,6.7,6.7],[1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1,1.3,1.3,1.3,1.3,1.3,1.3,4,4,4,4,4,4,3.3,3.3,3.3,3.3,3.3,3.3,4.7,4.7,4.7,4.7,4.7,4.7,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,8.699999999999999,null,null,null,null,null,null,15,15,15,15,15,15,19.3,19.3,19.3,19.3,19.3,19.3,13,13,13,13,13,13,10.6,10.6,10.6,10.6,0.3,10.6,10.6,11.6,11.6,11.6,11.6,11.6,11.6,7.3,7.3,7.3,7.3,7.3,7.3,11.7,11.7,11.7,11.7,11.7,11.7,12,12,12,12,12,12,0.3,0.3,0.3,0.3,0.3,0.7,0.7,0.7,0.7,0.7,0.7,1.3,1.3,1.3,1.3,1.3,1.3,2,2,2,2,2,2,1,1,1,1,1,1,3.7,3.7,3.7,3.7,3.7,3.7,1.3,1.3,1.3,1.3,1.3,1.3,1.7,1.7,1.7,1.7,1.7,1.7,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Epidemiological_Week<\/th>\n      <th>Age_Category<\/th>\n      <th>All_Causes_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>Respiratory_related_ED_Visits_to_Ottawa_Hospitals<\/th>\n      <th>F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals<\/th>\n      <th>ObjectId.x<\/th>\n      <th>Week_Number<\/th>\n      <th>outbreaks_school<\/th>\n      <th>outbreaks_health<\/th>\n      <th>outbreaks_congregate<\/th>\n      <th>prev_avg_school<\/th>\n      <th>prev_avg_health<\/th>\n      <th>prev_avg_congregate<\/th>\n      <th>pre_covid_school<\/th>\n      <th>pre_covid_health<\/th>\n      <th>pre_covid_congregate<\/th>\n      <th>ObjectId.y<\/th>\n      <th>total_outbreaks<\/th>\n      <th>total_outbreaks_prev<\/th>\n      <th>total_outbreaks_pre_covid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Epidemiological_Week","targets":1},{"name":"Age_Category","targets":2},{"name":"All_Causes_ED_Visits_to_Ottawa_Hospitals","targets":3},{"name":"Respiratory_related_ED_Visits_to_Ottawa_Hospitals","targets":4},{"name":"F__ED_Visits_Respiratory_related_in_Ottawa_Hospitals","targets":5},{"name":"ObjectId.x","targets":6},{"name":"Week_Number","targets":7},{"name":"outbreaks_school","targets":8},{"name":"outbreaks_health","targets":9},{"name":"outbreaks_congregate","targets":10},{"name":"prev_avg_school","targets":11},{"name":"prev_avg_health","targets":12},{"name":"prev_avg_congregate","targets":13},{"name":"pre_covid_school","targets":14},{"name":"pre_covid_health","targets":15},{"name":"pre_covid_congregate","targets":16},{"name":"ObjectId.y","targets":17},{"name":"total_outbreaks","targets":18},{"name":"total_outbreaks_prev","targets":19},{"name":"total_outbreaks_pre_covid","targets":20}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -477,6 +481,18 @@ Younger age groups show sharper increases during peak periods, suggesting greate
 <li><p>and each outbreak setting (school, healthcare, congregate care)</p></li>
 </ul>
 <p>This allows us to compare whether specific settings have distinct temporal effects and whether a single aggregated outbreak measure is sufficient.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Lagging code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create weekly lag dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lag_df <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
@@ -507,6 +523,9 @@ Younger age groups show sharper increases during peak periods, suggesting greate
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># drop NA from first week</span></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> merged <span class="sc">|&gt;</span></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(lag_total, lag_school, lag_health, lag_congregate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="vii.-regression-analysis" class="level2">
@@ -793,11 +812,12 @@ F-statistic: 37.65 on 11 and 144 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="viii.-model-selection" class="level2">
 <h2 class="anchored" data-anchor-id="viii.-model-selection">VIII. Model Selection</h2>
-<p>We evaluate model assumptions including linearity, homoscedasticity, normality of residuals, and influence diagnostics.</p>
+<p>We evaluate model assumptions and compare competing models to select a final specification.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Residual Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Multicollinearity (VIF)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false" href="">Model Comparison</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false" href="">Influence and Outliers (1)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-5" role="tab" aria-controls="tabset-6-5" aria-selected="false" href="">Influence and Outliers (2)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-6" role="tab" aria-controls="tabset-6-6" aria-selected="false" href="">AIC/BIC</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">1. Residual Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">2. Multicollinearity (VIF)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false" href="">Model Comparison</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false" href="">3. Influence and Outliers</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>We first assess standard linear model assumptions.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -821,6 +841,7 @@ F-statistic: 37.65 on 11 and 144 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p>We assess multicollinearity using Variance Inflation Factors (VIF).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                                   GVIF Df GVIF^(1/(2*Df))
@@ -846,6 +867,7 @@ lag_total:Age_Category 660.2284  5        1.914121</code></pre>
 </ul>
 </div>
 <div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<p>We compare models using ANOVA, AIC/BIC, and adjusted R².</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
@@ -866,16 +888,27 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7653644</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       df      AIC
+model2 25 1715.482
+model3 13 1731.358</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       df      BIC
+model2 25 1791.728
+model3 13 1771.006</code></pre>
+</div>
 </div>
 <ul>
-<li><p>Fit improvement is <strong>small / marginal</strong></p></li>
+<li><p>Fit improvement is small / marginal</p></li>
 <li><p>Barely statistically significant at 5%</p></li>
 <li><p>R² difference is tiny</p></li>
 </ul>
 </div>
 <div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
+<p>We examine influential observations using Cook’s distance and leverage plots.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which =</span> <span class="dv">4</span>)  <span class="co"># Cook's distance</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which =</span> <span class="dv">4</span>)  <span class="co"># Cook's distance model2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -883,7 +916,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3, <span class="at">which =</span> <span class="dv">4</span>)  <span class="co"># Cook's distance</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3, <span class="at">which =</span> <span class="dv">4</span>)  <span class="co"># Cook's distance model3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -891,68 +924,69 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which =</span> <span class="dv">5</span>)  <span class="co"># Residuals vs leverage model2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3, <span class="at">which =</span> <span class="dv">5</span>)  <span class="co"># Residuals vs leverage model3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/unnamed-chunk-18-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <ul>
 <li><p>A few influential points exist</p></li>
-<li><p>More complex model is <strong>more sensitive to them</strong></p></li>
+<li><p>More complex model is more sensitive to them</p></li>
 </ul>
 </div>
-<div id="tabset-6-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-5-tab">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">which =</span> <span class="dv">5</span>)  <span class="co"># Residuals vs leverage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="main_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3, <span class="at">which =</span> <span class="dv">5</span>)  <span class="co"># Residuals vs leverage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="main_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<section id="final-model-selection" class="level3">
+<h3 class="anchored" data-anchor-id="final-model-selection">Final model selection</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interpretation
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-6-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-6-tab">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(model2, model3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       df      AIC
-model2 25 1715.482
-model3 13 1731.358</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(model2, model3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       df      BIC
-model2 25 1791.728
-model3 13 1771.006</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>The detailed model (Model 2), which separates outbreaks by setting, provides the best statistical fit (Adjusted R² = 0.765, AIC = 1715). However, this improvement over the aggregated model (Model 3) is relatively modest.</p>
-<p>Model 2 includes a large number of interaction terms, many of which are not statistically significant, and exhibits signs of multicollinearity. This makes interpretation difficult and increases sensitivity to influential observations.</p>
-<p>In contrast, Model 3 (using total outbreaks) achieves comparable explanatory power (Adjusted R² = 0.722, AIC = 1731) while remaining substantially simpler and more interpretable. The key relationships, that outbreak intensity predicts ED visits and that this effect varies by age, remain clearly visible.</p>
-<p><strong>For these reasons, Model 3 is selected as the final model</strong>, prioritizing interpretability and robustness over marginal improvements in fit.</p>
-<p>We compare three models of increasing complexity:</p>
+<div class="callout-body-container callout-body">
+<p>We consider three models:</p>
 <ul>
 <li><p>Model 1: main effects only</p></li>
-<li><p>Model 2: outbreak-by-age interactions</p></li>
-<li><p>Model 3: aggregated outbreak measure with interaction</p></li>
+<li><p>Model 2: outbreak-by-age interactions (by setting)</p></li>
+<li><p>Model 3: total outbreaks with age interaction</p></li>
 </ul>
-<p>While Model 2 provides the best statistical fit (higher R², lower AIC), it introduces substantial multicollinearity and includes several weak interaction terms.</p>
-<p>Model 3 achieves comparable explanatory power with fewer parameters, improved stability, and clearer interpretation.</p>
-<p>Therefore, Model 3 is preferred as the final model for interpretation and visualization.</p>
-<p><strong>Math forumla for Model 3 Here</strong></p>
-<p>This choice prioritizes parsimony and robustness over marginal gains in fit.</p>
+<p>While Model 2 achieves the best fit, it suffers from:</p>
+<ul>
+<li><p>high multicollinearity</p></li>
+<li><p>increased sensitivity to influential observations</p></li>
+<li><p>reduced interpretability</p></li>
+</ul>
+<p>Model 3 achieves comparable explanatory power while remaining:</p>
+<ul>
+<li><p>more parsimonious</p></li>
+<li><p>more stable</p></li>
+<li><p>easier to interpret</p></li>
+</ul>
+<p><strong>Final Model:</strong></p>
+<p>We select Model 3.</p>
+</div>
+</div>
+<p><span class="math inline">\(\text{ED_visits}_t=\beta_0+\beta1\text{Outbreaks}{t-1}+\beta_2\text{Age}+\beta3 \text{outbreaks}{t-1}\times \text{Age}+\epsilon_t\)</span></p>
 </section>
-<section id="x.-interpreting-the-final-model" class="level2">
-<h2 class="anchored" data-anchor-id="x.-interpreting-the-final-model">X. Interpreting the Final Model</h2>
+</section>
+<section id="ix.-interpreting-the-final-model" class="level2">
+<h2 class="anchored" data-anchor-id="ix.-interpreting-the-final-model">IX. Interpreting the Final Model</h2>
 <section id="age-specific-effects-of-outbreaks" class="level3">
 <h3 class="anchored" data-anchor-id="age-specific-effects-of-outbreaks">Age-Specific Effects of Outbreaks</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -963,7 +997,7 @@ model3 13 1771.006</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="main_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="main_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -978,21 +1012,21 @@ model3 13 1771.006</code></pre>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_df,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lag_total,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> Age_Category)) <span class="sc">+</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Effect of Respiratory Outbreaks on ED Visits by Age Group"</span>,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Lagged Total Outbreaks"</span>,</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Respiratory ED Visits"</span>,</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Age Group"</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_df,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> lag_total,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Respiratory_related_ED_Visits_to_Ottawa_Hospitals,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> Age_Category)) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Effect of Respiratory Outbreaks on ED Visits by Age Group"</span>,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Lagged Total Outbreaks"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Respiratory ED Visits"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Age Group"</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1013,11 +1047,11 @@ model3 13 1771.006</code></pre>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model3) <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"lag_total"</span> <span class="sc">|</span> <span class="fu">grepl</span>(<span class="st">"lag_total:Age_Category"</span>, term))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model3) <span class="sc">|&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"lag_total"</span> <span class="sc">|</span> <span class="fu">grepl</span>(<span class="st">"lag_total:Age_Category"</span>, term))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   term                                 estimate std.error statistic      p.value
@@ -1029,7 +1063,7 @@ model3 13 1771.006</code></pre>
 5 lag_total:Age_Category55 to 79 Years    -6.81      3.52    -1.93  0.0552      
 6 lag_total:Age_Category80+ Years        -11.5       3.52    -3.27  0.00133     </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(model3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(model3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         (Intercept)                            lag_total 
                           178.377833                            15.018360 
@@ -1044,18 +1078,18 @@ lag_total:Age_Category12 to 17 Years lag_total:Age_Category18 to 54 Years
 lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years 
                            -6.809133                           -11.527608 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline (00–03)</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>base_effect <span class="ot">&lt;-</span> <span class="fu">coef</span>(model3)[<span class="st">"lag_total"</span>]</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># example: 12–17</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>teen_effect <span class="ot">&lt;-</span> base_effect <span class="sc">+</span> <span class="fu">coef</span>(model3)[<span class="st">"lag_total:Age_Category12 to 17 Years"</span>]</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>base_effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline (00–03)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>base_effect <span class="ot">&lt;-</span> <span class="fu">coef</span>(model3)[<span class="st">"lag_total"</span>]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># example: 12–17</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>teen_effect <span class="ot">&lt;-</span> base_effect <span class="sc">+</span> <span class="fu">coef</span>(model3)[<span class="st">"lag_total:Age_Category12 to 17 Years"</span>]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>base_effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lag_total 
  15.01836 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>teen_effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>teen_effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lag_total 
  1.284619 </code></pre>
@@ -1084,23 +1118,23 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<div id="zksryxuzok" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zksryxuzok table {
+<div id="bwbogznlqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bwbogznlqf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zksryxuzok thead, #zksryxuzok tbody, #zksryxuzok tfoot, #zksryxuzok tr, #zksryxuzok td, #zksryxuzok th {
+#bwbogznlqf thead, #bwbogznlqf tbody, #bwbogznlqf tfoot, #bwbogznlqf tr, #bwbogznlqf td, #bwbogznlqf th {
   border-style: none;
 }
 
-#zksryxuzok p {
+#bwbogznlqf p {
   margin: 0;
   padding: 0;
 }
 
-#zksryxuzok .gt_table {
+#bwbogznlqf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1126,12 +1160,12 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-left-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_caption {
+#bwbogznlqf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zksryxuzok .gt_title {
+#bwbogznlqf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1143,7 +1177,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-bottom-width: 0;
 }
 
-#zksryxuzok .gt_subtitle {
+#bwbogznlqf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1155,7 +1189,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-top-width: 0;
 }
 
-#zksryxuzok .gt_heading {
+#bwbogznlqf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1167,13 +1201,13 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-right-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_bottom_border {
+#bwbogznlqf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_col_headings {
+#bwbogznlqf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1188,7 +1222,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-right-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_col_heading {
+#bwbogznlqf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1208,7 +1242,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   overflow-x: hidden;
 }
 
-#zksryxuzok .gt_column_spanner_outer {
+#bwbogznlqf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1220,15 +1254,15 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 4px;
 }
 
-#zksryxuzok .gt_column_spanner_outer:first-child {
+#bwbogznlqf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zksryxuzok .gt_column_spanner_outer:last-child {
+#bwbogznlqf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zksryxuzok .gt_column_spanner {
+#bwbogznlqf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1240,11 +1274,11 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   width: 100%;
 }
 
-#zksryxuzok .gt_spanner_row {
+#bwbogznlqf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zksryxuzok .gt_group_heading {
+#bwbogznlqf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1304,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   text-align: left;
 }
 
-#zksryxuzok .gt_empty_group_heading {
+#bwbogznlqf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1285,15 +1319,15 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   vertical-align: middle;
 }
 
-#zksryxuzok .gt_from_md > :first-child {
+#bwbogznlqf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zksryxuzok .gt_from_md > :last-child {
+#bwbogznlqf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zksryxuzok .gt_row {
+#bwbogznlqf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1312,7 +1346,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   overflow-x: hidden;
 }
 
-#zksryxuzok .gt_stub {
+#bwbogznlqf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1325,7 +1359,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 5px;
 }
 
-#zksryxuzok .gt_stub_row_group {
+#bwbogznlqf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1339,15 +1373,15 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   vertical-align: top;
 }
 
-#zksryxuzok .gt_row_group_first td {
+#bwbogznlqf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zksryxuzok .gt_row_group_first th {
+#bwbogznlqf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zksryxuzok .gt_summary_row {
+#bwbogznlqf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1357,16 +1391,16 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 5px;
 }
 
-#zksryxuzok .gt_first_summary_row {
+#bwbogznlqf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_first_summary_row.thick {
+#bwbogznlqf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zksryxuzok .gt_last_summary_row {
+#bwbogznlqf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1376,7 +1410,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-bottom-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_grand_summary_row {
+#bwbogznlqf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1386,7 +1420,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 5px;
 }
 
-#zksryxuzok .gt_first_grand_summary_row {
+#bwbogznlqf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1396,7 +1430,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-top-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_last_grand_summary_row_top {
+#bwbogznlqf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1406,11 +1440,11 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-bottom-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_striped {
+#bwbogznlqf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zksryxuzok .gt_table_body {
+#bwbogznlqf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1419,7 +1453,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-bottom-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_footnotes {
+#bwbogznlqf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1433,7 +1467,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-right-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_footnote {
+#bwbogznlqf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1442,7 +1476,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 5px;
 }
 
-#zksryxuzok .gt_sourcenotes {
+#bwbogznlqf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1456,7 +1490,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   border-right-color: #D3D3D3;
 }
 
-#zksryxuzok .gt_sourcenote {
+#bwbogznlqf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1464,72 +1498,72 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
   padding-right: 5px;
 }
 
-#zksryxuzok .gt_left {
+#bwbogznlqf .gt_left {
   text-align: left;
 }
 
-#zksryxuzok .gt_center {
+#bwbogznlqf .gt_center {
   text-align: center;
 }
 
-#zksryxuzok .gt_right {
+#bwbogznlqf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zksryxuzok .gt_font_normal {
+#bwbogznlqf .gt_font_normal {
   font-weight: normal;
 }
 
-#zksryxuzok .gt_font_bold {
+#bwbogznlqf .gt_font_bold {
   font-weight: bold;
 }
 
-#zksryxuzok .gt_font_italic {
+#bwbogznlqf .gt_font_italic {
   font-style: italic;
 }
 
-#zksryxuzok .gt_super {
+#bwbogznlqf .gt_super {
   font-size: 65%;
 }
 
-#zksryxuzok .gt_footnote_marks {
+#bwbogznlqf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zksryxuzok .gt_asterisk {
+#bwbogznlqf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zksryxuzok .gt_indent_1 {
+#bwbogznlqf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zksryxuzok .gt_indent_2 {
+#bwbogznlqf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zksryxuzok .gt_indent_3 {
+#bwbogznlqf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zksryxuzok .gt_indent_4 {
+#bwbogznlqf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zksryxuzok .gt_indent_5 {
+#bwbogznlqf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zksryxuzok .katex-display {
+#bwbogznlqf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zksryxuzok div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bwbogznlqf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1617,7 +1651,7 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="main_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="main_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1625,35 +1659,35 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
 </div>
 <div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lag_total =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),  <span class="co"># low vs high outbreaks</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age_Category =</span> <span class="fu">unique</span>(analysis_df<span class="sc">$</span>Age_Category)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">lag_total =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),  <span class="co"># low vs high outbreaks</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age_Category =</span> <span class="fu">unique</span>(analysis_df<span class="sc">$</span>Age_Category)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>scenario_df<span class="sc">$</span>predicted_ED <span class="ot">&lt;-</span> <span class="fu">predict</span>(model3, <span class="at">newdata =</span> scenario_df)</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Pretty table</span></span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="sc">%&gt;%</span></span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_total =</span> <span class="fu">ifelse</span>(lag_total <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Low (2 outbreaks)"</span>, <span class="st">"High (15 outbreaks)"</span>)</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lag_total =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),  <span class="co"># low vs high outbreaks</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age_Category =</span> <span class="fu">unique</span>(analysis_df<span class="sc">$</span>Age_Category)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">lag_total =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),  <span class="co"># low vs high outbreaks</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age_Category =</span> <span class="fu">unique</span>(analysis_df<span class="sc">$</span>Age_Category)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>scenario_df<span class="sc">$</span>predicted_ED <span class="ot">&lt;-</span> <span class="fu">predict</span>(model3, <span class="at">newdata =</span> scenario_df)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Pretty table</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>scenario_df <span class="sc">%&gt;%</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag_total =</span> <span class="fu">ifelse</span>(lag_total <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Low (2 outbreaks)"</span>, <span class="st">"High (15 outbreaks)"</span>)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="ix.-key-findings" class="level2">
-<h2 class="anchored" data-anchor-id="ix.-key-findings">IX. Key Findings</h2>
+<section id="x.-key-findings" class="level2">
+<h2 class="anchored" data-anchor-id="x.-key-findings">X. Key Findings</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1671,8 +1705,8 @@ lag_total:Age_Category55 to 79 Years      lag_total:Age_Category80+ Years
 </div>
 </div>
 </section>
-<section id="x.-public-health-implications" class="level2">
-<h2 class="anchored" data-anchor-id="x.-public-health-implications">X. Public Health Implications</h2>
+<section id="xi.-public-health-implications" class="level2">
+<h2 class="anchored" data-anchor-id="xi.-public-health-implications">XI. Public Health Implications</h2>
 <p>This analysis highlights clear age-specific differences in how respiratory outbreak activity relates to emergency department utilization.</p>
 <ul>
 <li><p>Young children (0–3 years) show the strongest response to increases in outbreak activity</p></li>
@@ -1687,6 +1721,9 @@ From a planning perspective, monitoring outbreak trends could support:</p>
 </ul>
 <p>While this analysis is not causal, the consistent temporal relationship between outbreaks and ED visits indicates that outbreak surveillance data may be a valuable input for short-term healthcare planning.</p>
 <p>Future work could extend this analysis using count-based time series models (e.g., Poisson or negative binomial regression) to better account for the distributional properties of ED visits.</p>
+</section>
+<section id="xii.-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="xii.-limitations">XII. Limitations</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
